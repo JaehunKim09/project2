@@ -95,7 +95,7 @@ border:1px dotted black;
 <body>
 <div id="p_container_header">
 	<div id="logo">
-		<img src="#">로고Image
+		<a href="ShopServlet?command=index" class="a_tag"><img src="#">로고</a>
 	</div>
 	
 	<div id="login">

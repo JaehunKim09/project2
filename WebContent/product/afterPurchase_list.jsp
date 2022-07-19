@@ -42,7 +42,7 @@ html, body {
 	<div id="big">
 		<div id="small">
 			<div id="header">
-				<jsp:include page="../header_notlogin.jsp"></jsp:include>
+				<jsp:include page="../include/header_notlogin.jsp"></jsp:include>
 			</div>
 			<!-- header -->
 			<hr size="2" style="color: lightgray">
@@ -72,7 +72,7 @@ html, body {
 		</div>
 		<!-- small -->
 		<div id="footer">
-			<jsp:include page="../footer.jsp"></jsp:include></div>
+			<jsp:include page="../include/footer.jsp"></jsp:include></div>
 	</div>
 	<!-- big -->
 </body>

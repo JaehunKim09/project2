@@ -79,7 +79,7 @@ td {
 	<div id="big">
 		<div id="small">
 			<div id="header">
-				<jsp:include page="../header_notlogin.jsp"></jsp:include>
+				<jsp:include page="../include/header_notlogin.jsp"></jsp:include>
 			</div>
 			<div id="p_container">
 				<table class="top">
@@ -137,7 +137,7 @@ td {
 						</tr>
 					</tbody>
 					<table>
-						<td><input type="submit" value="결제하기" class="button">
+						<td style="padding-left:0"><input type="submit" value="결제하기" class="button">
 							<input type="reset" value="취소하기" class="button"></td>
 					</table>
 				</table>
@@ -146,7 +146,7 @@ td {
 		</div>
 		<!-- small -->
 		<div id="footer">
-			<jsp:include page="../footer.jsp"></jsp:include></div>
+			<jsp:include page="../include/footer.jsp"></jsp:include></div>
 	</div>
 	<!-- big -->
 </body>

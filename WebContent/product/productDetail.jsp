@@ -16,13 +16,16 @@ position:relative;
 min-height:100%;
 }
 #small{
+margin-left:180px;
 padding-bottom:200px;
 }
 .product_img{
+
 width:300px;
 height:270px;
 }
 .div_img{
+
 display:inline-block;
 margin-left:400px;
 margin-right:50px;
@@ -46,7 +49,7 @@ height:30px;
 #option_tab{
 border-collapse:collapse;
 }
-/* #product_price{
+#product_price{
 top:85px;
 position:absolute;
 width:200px;
@@ -55,7 +58,7 @@ left:190px;
 font-weight:bold;
 color:red;
 size:20px;
-} */
+}
 p{
 font-size:13px;
 }
@@ -78,8 +81,8 @@ font-weight:bold;
 <body>
 <div id="big">
 
-<div id="small">
 <jsp:include page="../include/header_notlogin.jsp"></jsp:include>
+<div id="small">
 	<div class="product_img div_img">
 		<img class="product_img" src="${product.pImg}"><br>
 		<div id="product_option">

@@ -1,80 +1,98 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Bootstrap Front</title>
+<title>Insert title here</title>
 <style>
-footer{
-position:absolute;
-width:100%;
-height:100%;
+html, body {
+	margin: 0;
+	padding: 0;
+	height: 100%;
 }
-.banner{
-position:absolute;
-margin:0;
-width:100%;
-height:300px;
-top:10px;
+
+#big {
+	min-height: 100%;
+	position: relative;
 }
-.product{
-display:inline-block;
-width:200px;
-height:200px;
-border: 1px solid black;
-top:500px;
-left:60px;
-bottom:500px;
-margin-right:40px;
+
+#small {
+	padding-bottom: 200px; /* footer의 높이 */
 }
-#container2{
-position:absolute;
-top:430px;
-left:470px;
-width:1500px;
-height:500px;
+
+#banner {
+	position: absolute;
+	margin: 0;
+	width: 100%;
+	height: 300px;
+	top: 210px;
+	border: 1px solid black;
 }
-#product{
-position:absolute;
-top:360px;
-left:470px;
+
+.product {
+	display: inline-block;
+	width: 300px;
+	height: 300px;
+	border: 1px solid black;
+	top: 500px;
+	left: 60px;
+	bottom: 500px;
+	margin-right: 40px;
+}
+
+#product {
+	position: absolute;
+	top: 560px;
+	left: 280px;
+}
+#a_container {
+	padding-top: 400px;
+	margin-left: 15%;
 }
 </style>
 </head>
 <body>
-<!-- header -->
-<jsp:include page="include/header_notlogin.jsp"></jsp:include>
-<footer>
+	<div id="big">
+		<div id="small">
+			<div id="header">
+				<jsp:include page="include/header_notlogin.jsp"></jsp:include>
+			</div>
 
-<!-- 배너 이미지 삽입 공간 -->
-<div class="banner">
-<img class="banner" src="https://t1.kakaocdn.net/kakaocorp/kakaocorp/admin/news/9684fe14017b00001.png">
-</div>
+			<div id="banner">
+				<img src="..."> 여기는 배너이미지 넣는 곳.
+			</div>
 
-<div id="product">*추천 상품</div>
+			<div id="product">*추천 상품</div>
 
-<div id="container2">
-<div class="product">
-	<img class="product" src="https://file.mk.co.kr/meet/neds/2022/02/image_readtop_2022_92915_16436841154931279.jpg">
-	상품1
-</div>
+			<div id="a_container">
+				<div class="product">
+					<img class="product"
+						src="https://image.msscdn.net/images/goods_img/20200123/1280017/1280017_2_500.jpg?t=20200820161743">
+					상품1
+				</div>
 
-<div class="product">
-	<img class="product" src="http://gdimg.gmarket.co.kr/656415808/still/280?ver=1594471746">
-	상품2
-</div>
-<div class="product">
-	<img class="product" src="http://s3-ap-northeast-2.amazonaws.com/stockplus-insight-seoul/articles/pictures/8084/content_www_google_co_kr_20160829_202550.jpg">
-	상품3
-</div>
-<div class="product">
-	<img class="product" src="https://shop4.daumcdn.net/thumb/R500x500/?fname=http%3A%2F%2Fshop4.daumcdn.net%2Fshophow%2Fp%2FF17377571003.jpg%3Fut%3D20220509164222">
-	상품4
-</div>
-</div>
-
-<jsp:include page="include/footer.jsp"></jsp:include>
-</footer>
+				<div class="product">
+					<img class="product"
+						src="https://image.msscdn.net/images/goods_img/20210907/2113554/2113554_3_500.jpg?t=20220405095359">
+					상품2
+				</div>
+				<div class="product">
+					<img class="product"
+						src="https://image.msscdn.net/images/goods_img/20210428/1926895/1926895_2_500.jpg?t=20220510163120">
+					상품3
+				</div>
+				<div class="product">
+					<img class="product"
+						src="https://image.msscdn.net/images/goods_img/20201117/1692628/1692628_5_125.jpg">
+					상품4
+				</div>
+			</div>
+		</div>
+		<!-- small -->
+		<div id="footer">
+			<jsp:include page="include/footer.jsp"></jsp:include></div>
+	</div>
+	<!-- big -->
 </body>
 </html>

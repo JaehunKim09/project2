@@ -1,108 +1,136 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
-<title>1:1¹®ÀÇ</title>
-<style type="text/css">
-aside{
-width: 20%; float: left;
+<meta charset="UTF-8">
+<title>1:1ë¬¸ì˜</title>
+<style>
+html, body {
+	margin: 0;
+	padding: 0;
+	height: 100%;
 }
-h1{
-text-align: center;
-}
-hr{
-size: 10px;
-}
-section{
- height : 50%; left: 50%; width: 80%; float : center;
-}
-#aside{
-margin-right:50px;
-}
-select{
-width: 200px;
-}
-#div1{
-width: 50%; height: 50%; text-align: left;
-}
-#but{
-margin: auto;
 
-width: 100px;
-background-color: darkblue;
-color: white;
+#big {
+	min-height: 100%;
+	position: relative;
 }
-#div_but{
-margin-left:500px;
+
+#small {
+	padding-bottom: 200px; /* footerì˜ ë†’ì´ */
+}
+</style>
+
+<style type="text/css">
+aside {
+	width: 20%;
+	float: left;
+}
+
+h1 {
+	text-align: center;
+}
+
+hr {
+	size: 10px;
+}
+
+#aside {
+	margin-right: 50px;
+}
+
+select {
+	width: 200px;
+}
+
+#div1 {
+	width: 50%;
+	height: 50%;
+	text-align: left;
+	    margin-left: 24%
+}
+
+#but {
+	margin: auto;
+	width: 100px;
+	background-color: darkblue;
+	color: white;
+}
+
+#div_but {
+	margin-left: 600px;
+}
+
+#a_container {
+	padding-top: 50px;
+	margin-left: 13%;
 }
 </style>
 </head>
 <body>
-<!-- header -->
-<header>
-<jsp:include page="../header_notlogin.jsp"></jsp:include>
-</header>
-<section>
-<aside id="aside">
-<h1>°í°´¼¾ÅÍ</h1>
-<hr size="5px" color = "black">
-<b><a href="question_main.jsp" style="color: black; text-decoration: none"><li>ÀÚÁÖÇÏ´Â Áú¹®</b></li></a>
-<hr>
-<b><a href="ask.jsp" style="color: black; text-decoration: none"><li>1:1 ¹®ÀÇÇÏ±â</b></li><br><br><br></a>
-<br>
-<table style="border-collapse: collapse; width : 100%" border="1px">
-<td style="text-align: center">
-<h3>»ó´ã ÀüÈ­</h3>
-<b style="color: orange;">1234 - 5678</b>
-<br>
-ÆòÀÏ 09:00 ~ 18:00
-<br>
-ÁÖ¸»/ °øÈŞÀÏ ÈŞ¹«
-<br><br>
-</td>
-</table>
-</aside>
-<article>
-<br>
-<h2>1:1¹®ÀÇ</h2>
-<hr>
-<table style="border-collapse: collapse; width:65%" border="1px">
-<td>
-<ul>
-<li>1:1¹®ÀÇ¿¡¼­ ¿øÇÏ´Â ´äÀ» Ã£Áö ¸øÇÏ¼Ì´Ù¸é ÀÚÁÖÇÏ´Â Áú¹®À» ÀÌ¿ëÇØÁÖ¼¼¿ä.</li>
-<li>ÀÌ¿ë Áß ºÒÆíÇÑ »çÇ×ÀÌ³ª ¹®ÀÇ»çÇ×ÀÌ ÀÖÀ¸½Ã¸é ¾ğÁ¦µçÁö ¿¬¶ô ÁÖ¼¼¿ä.</li>
-<li>¹®ÀÇÇÏ½Å ³»¿ë¿¡ ´ëÇÑ ´äº¯Àº ¹®ÀÇ³»¿ª¿¡¼­ È®ÀÎÇÏ½Ç¼ö ÀÖ½À´Ï´Ù.</li>
-<li>1:1¹®ÀÇ³»¿ëÀº º»ÀÎ¸¸ È®ÀÎÇÒ ¼ö ÀÖ½À´Ï´Ù.</li>
-</ul>
-</td>
-</table>
-</article>
-</section>
+	<div id="big">
+		<div id="small">
+			<div id="header">
+				<jsp:include page="../include/header_notlogin.jsp"></jsp:include>
+			</div>
+			
+			<div id="a_container">
+				<aside id="aside">
+					<h1>ê³ ê°ì„¼í„°</h1>
+					<hr size="5px" color="black">
+					<b><a href="question_main.jsp"
+						style="color: black; text-decoration: none"><li>ìì£¼í•˜ëŠ” ì§ˆë¬¸</b>
+					</li> </a>
+					<hr>
+					<b><a href="ask.jsp"
+						style="color: black; text-decoration: none"><li>1:1 ë¬¸ì˜í•˜ê¸°</b>
+					</li> <br> <br> <br> </a> <br>
+					<table style="border-collapse: collapse; width: 100%" border="1px">
+						<td style="text-align: center">
+							<h3>ìƒë‹´ ì „í™”</h3> <b style="color: orange;">1234 - 5678</b> <br>
+							í‰ì¼ 09:00 ~ 18:00 <br> ì£¼ë§/ ê³µíœ´ì¼ íœ´ë¬´ <br> <br>
+						</td>
+					</table>
+				</aside>
 
-<br>
-<div id="div1">
-ºĞ·ù <select>
-<option> Á¦Ç°¹®ÀÇ</option>
-<option>Á¦Ç°¹®ÀÇ2</option>
-<option>Á¦Ç°¹®ÀÇ3</option>
-</select>
-<br><br>
-Á¦¸ñ <input type="text" size="50px">
-<br><br>
-³»¿ë <input type="text" size="50px" style="height: 100px;">
-</div>
-<br>
-<div id="div_but">
-<input type="submit" value="º¸³»±â" id="but">
-<input type="reset" value="Ãë¼Ò" id="but">
-</div>
-<br>
+				<article>
+					<br>
+					<h2>1:1ë¬¸ì˜</h2>
+					<hr style="width:745px; float:left">
+					<table style="border-collapse: collapse; width: 45%" border="1px">
+						<td>
+							<ul>
+								<li>1:1ë¬¸ì˜ì—ì„œ ì›í•˜ëŠ” ë‹µì„ ì°¾ì§€ ëª»í•˜ì…¨ë‹¤ë©´ ìì£¼í•˜ëŠ” ì§ˆë¬¸ì„ ì´ìš©í•´ì£¼ì„¸ìš”.</li>
+								<li>ì´ìš© ì¤‘ ë¶ˆí¸í•œ ì‚¬í•­ì´ë‚˜ ë¬¸ì˜ì‚¬í•­ì´ ìˆìœ¼ì‹œë©´ ì–¸ì œë“ ì§€ ì—°ë½ ì£¼ì„¸ìš”.</li>
+								<li>ë¬¸ì˜í•˜ì‹  ë‚´ìš©ì— ëŒ€í•œ ë‹µë³€ì€ ë¬¸ì˜ë‚´ì—­ì—ì„œ í™•ì¸í•˜ì‹¤ìˆ˜ ìˆìŠµë‹ˆë‹¤.</li>
+								<li>1:1ë¬¸ì˜ë‚´ìš©ì€ ë³¸ì¸ë§Œ í™•ì¸í•  ìˆ˜ ìˆìŠµë‹ˆë‹¤.</li>
+							</ul>
+						</td>
+					</table>
+				</article>
 
-<!-- footer -->
-<footer>
-<jsp:include page="../footer.jsp"></jsp:include>
-</footer>	
+				<br>
+				<div id="div1">
+					ë¶„ë¥˜ <select>
+						<option>ì œí’ˆë¬¸ì˜</option>
+						<option>ì œí’ˆë¬¸ì˜2</option>
+						<option>ì œí’ˆë¬¸ì˜3</option>
+					</select> <br> <br> ì œëª© <input type="text" size="50px"> <br>
+					<br> ë‚´ìš© <input type="text" size="50px" style="height: 100px;">
+				</div>
+				<br>
+				<div id="div_but">
+					<input type="submit" value="ë³´ë‚´ê¸°" id="but"> <input
+						type="reset" value="ì·¨ì†Œ" id="but">
+				</div>
+
+			</div>
+		</div>
+		<!-- small -->
+		<div id="footer">
+			<jsp:include page="../include/footer.jsp"></jsp:include></div>
+	</div>
+	<!-- big -->
 </body>
 </html>

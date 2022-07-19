@@ -28,11 +28,12 @@ html, body {
 }
 #mypage_div{
 position:absolute;
-left:430px;
+left:600px;
 border:1px solid black;
 width:900px;
 height:80px;
 text-align:left;
+
 }
 #mypage_span{
 font-size:30px;
@@ -123,7 +124,7 @@ span{
 	<div id="big">
 		<div id="small">
 			<div id="header">
-				<jsp:include page="../header_notlogin.jsp"></jsp:include>
+				<jsp:include page="../include/header_notlogin.jsp"></jsp:include>
 			</div><!-- header -->
 			<hr size="2" style="color:lightgray">
 			<div id="mypage_div">
@@ -167,7 +168,7 @@ span{
 	</div>	
 		</div><!-- small -->
 		<div id="footer">
-			<jsp:include page="../footer.jsp"></jsp:include></div>
+			<jsp:include page="../include/footer.jsp"></jsp:include></div>
 	</div><!-- big -->
 </body>
 </html>

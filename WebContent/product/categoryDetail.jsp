@@ -19,8 +19,9 @@ html, body {
 }
 
 #small {
+margin-left:180px;
 padding-top:100px;
-	padding-bottom: 200px; /* footer의 높이 */
+padding-bottom: 200px; /* footer의 높이 */
 }
 
 .product {

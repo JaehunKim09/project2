@@ -73,7 +73,7 @@ margin-left:30px;}
 	<div id="big">
 		<div id="small">
 			<div id="header">
-				<jsp:include page="../header_notlogin.jsp"></jsp:include>
+				<jsp:include page="../include/header_notlogin.jsp"></jsp:include>
 			</div>
 
 			<div id="mypage_table_div">
@@ -103,7 +103,7 @@ margin-left:30px;}
 			</div>
 		</div>
 		<div id="footer">
-			<jsp:include page="../footer.jsp"></jsp:include></div>
+			<jsp:include page="../include/footer.jsp"></jsp:include></div>
 	</div>
 </body>
 </html>

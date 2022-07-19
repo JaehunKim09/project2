@@ -65,7 +65,7 @@ text-align:center;
 </style>
 </head>
 <body>
-<jsp:include page="../header_notlogin.jsp"></jsp:include>
+<jsp:include page="../include/header_notlogin.jsp"></jsp:include>
 <footer>
 	<div id="p_container_main">
 	<hr size="2" style="color:lightgray">
@@ -116,7 +116,7 @@ text-align:center;
 		</table>
 		</div>
 		</div><!-- p_container_main end -->	
-		<jsp:include page="../footer.jsp"></jsp:include>	
+		<jsp:include page="../include/footer.jsp"></jsp:include>	
 	</footer><!-- p_container_withFooter end -->
 </body>
 </html>

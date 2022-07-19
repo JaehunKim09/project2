@@ -51,5 +51,34 @@ public class clientDAO {
 			}
 			return cVo;
 		}
+
+		public void insertClient(clientVO cVo) {
+			
+			String sql = "insert into client values(?,?,?,?,?,?)";
+			
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+			
+			try {
+				conn = DBManager.getConnection();
+				pstmt = conn.prepareStatement(sql);
+				
+				pstmt.setString(1, cVo.getName());
+				pstmt.setString(2, cVo.getId());
+				pstmt.setString(3, cVo.getPw());
+				pstmt.setString(4, cVo.getPhone());
+				pstmt.setString(5, cVo.getEmail());
+				pstmt.setString(6, cVo.getAddress());
+				
+				pstmt.executeUpdate();//쿼리문 실행
+				
+				
+			}catch(Exception e) {
+				e.printStackTrace();
+			}finally {
+				DBManager.close(conn, pstmt);
+			}
+			
+		}
 		
 }

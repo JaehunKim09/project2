@@ -3,6 +3,7 @@ package team.shop.controller;
 import team.shop.controller.action.Action; 
 import team.shop.controller.action.CategoryDetailAction;
 import team.shop.controller.action.IndexAction;
+import team.shop.controller.action.JoinAction;
 import team.shop.controller.action.JoinFormAction;
 import team.shop.controller.action.LoginAction;
 import team.shop.controller.action.LoginFormAction;
@@ -36,6 +37,8 @@ public class ActionFactory {
 			action = new LoginFormAction();
 		}else if(command.equals("join_form")) {
 			action = new JoinFormAction();
+		}else if(command.equals("join")) {
+			action = new JoinAction();
 		}else if(command.equals("logout")){
 			action = new LogoutAction();
 		}

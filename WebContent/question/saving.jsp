@@ -1,101 +1,131 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
-<title>Àû¸³¹®ÀÇ</title>
-<style type="text/css">
-footer{
-clear: both;
+<meta charset="UTF-8">
+<title>ì ë¦½ë¬¸ì˜</title>
+<style>
+html, body {
+	margin: 0;
+	padding: 0;
+	height: 100%;
 }
-aside{
-width: 20%; height: 80%; float: left;
-}
-h1{
-text-align: center;
-}
-section{
- height : 50%; left: 50%; width: 80%; float : center;
-}
-article{
 
+#big {
+	min-height: 100%;
+	position: relative;
 }
-#aside{
-margin-right:50px;
+
+#small {
+	padding-bottom: 200px; /* footerì˜ ë†’ì´ */
 }
-th{
-width: 80px;
+</style>
+<style type="text/css">
+aside {
+	width: 20%;
+	height: 80%;
+	float: left;
 }
-p{
-margin : auto;
+
+h1 {
+	text-align: center;
+}
+
+#aside {
+	margin-right: 50px;
+}
+
+th {
+	width: 80px;
+}
+
+p {
+	margin: auto;
+}
+
+#a_container {
+	padding-top: 50px;
+	margin-left: 10%;
 }
 </style>
 </head>
 <body>
-<!-- header -->
-<header>
-<jsp:include page="../header_notlogin.jsp"></jsp:include>
-</header>
-<section>
-<aside id="aside">
-<h1>°í°´¼¾ÅÍ</h1>
-<hr size="5px" color = "black">
-<b><a href="question_main.jsp" style="color: black; text-decoration: none"><li>ÀÚÁÖÇÏ´Â Áú¹®</b></li></a>
-<hr>
-<b><a href="ask.jsp" style="color: black; text-decoration: none"><li>1:1 ¹®ÀÇÇÏ±â</b></li><br><br><br></a>
-<br>
-<table style="border-collapse: collapse; width : 100%" border="1px">
-<td style="text-align: center">
-<h3>»ó´ã ÀüÈ­</h3>
-<b style="color: orange;">1234 - 5678</b>
-<br>
-ÆòÀÏ 09:00 ~ 18:00
-<br>
-ÁÖ¸»/ °øÈŞÀÏ ÈŞ¹«
-<br><br>
-</td>
-</table>
-</aside>
-<article>
-<br>
-<h2>Àû¸³/ÇıÅÃ</h2>
-<hr>
-<table style="border-collapse: collapse; width : 70%; height: 90px;" border="1px">
-<td style="margin: auto; text-align: center;">
-<select style="width: 100px; height: 25px;">
-<option>ÀüÃ¼</option>
-<option>ÀüÃ¼1</option>
-<option>ÀüÃ¼2</option>
-</select>
-<input type="search" style="height: 26px; width: 60%">
-<input type="submit" value="°Ë»ö" style="width: 100px; height: 26px;">
-</td>
-</table>
-<br>
-<table style=" border-collapse: collapse;width : 70%; height: 40px; "border="1px">
-<th><a href="question_main.jsp">ÀüÃ¼</a></th>
-<th><a href="product_inquiry.jsp">»óÇ°¹®ÀÇ</a></th>
-<th><a href="order_payment.jsp">ÁÖ¹®/°áÁ¦</a></th>
-<th><a href="delivery.jsp">¹è¼Û</a></th>
-<th><a href="return.jsp">¹İÇ°/±³È¯/È¯ºÒ</a></th>
-<th><a href="saving.jsp">Àû¸³/ÇıÅÃ</a></th>
-<th><a href="etc.jsp">È¸¿ø/±âÅ¸</a></th>
-</table>
-<hr>
-<details>
-<summary><b>Q : </b>Àû¸³¹®ÀÇ Áú¹®1</summary>
-<p><b>A : </b>Àû¸³¹®ÀÇ ´äº¯2</p>
-</details>
-<details>
-<summary><b>Q : </b>Àû¸³¹®ÀÇ Áú¹®2</summary>
-<p><b>A : </b>>Àû¸³¹®ÀÇ ´äº¯2</p>
-</details>
-</article>
-</section>
-<!-- footer -->
-<footer>
-<jsp:include page="../footer.jsp"></jsp:include>
-</footer>	
+	<div id="big">
+		<div id="small">
+			<div id="header">
+				<jsp:include page="../include/header_notlogin.jsp"></jsp:include>
+			</div>
+			<div id="a_container">
+				<aside id="aside">
+					<h1>ê³ ê°ì„¼í„°</h1>
+					<hr size="5px" color="black">
+					<b><a href="question_main.jsp"
+						style="color: black; text-decoration: none"><li>ìì£¼í•˜ëŠ” ì§ˆë¬¸</b>
+					</li> </a>
+					<hr>
+					<b><a href="ask.jsp"
+						style="color: black; text-decoration: none"><li>1:1 ë¬¸ì˜í•˜ê¸°</b>
+					</li> <br> <br> <br> </a> <br>
+					<table style="border-collapse: collapse; width: 100%" border="1px">
+						<td style="text-align: center">
+							<h3>ìƒë‹´ ì „í™”</h3> <b style="color: orange;">1234 - 5678</b> <br>
+							í‰ì¼ 09:00 ~ 18:00 <br> ì£¼ë§/ ê³µíœ´ì¼ íœ´ë¬´ <br> <br>
+						</td>
+					</table>
+				</aside>
+
+				<article>
+					<br>
+					<h2>ì ë¦½/í˜œíƒ</h2>
+					<hr style="width:1210px; float:left">
+					<table style="border-collapse: collapse; width: 70%; height: 90px;"
+						border="1px">
+						<td style="margin: auto; text-align: center;"><select
+							style="width: 100px; height: 25px;">
+								<option>ì „ì²´</option>
+								<option>ì „ì²´1</option>
+								<option>ì „ì²´2</option>
+						</select> <input type="search" style="height: 26px; width: 60%"> <input
+							type="submit" value="ê²€ìƒ‰" style="width: 100px; height: 26px;">
+						</td>
+					</table>
+					<br>
+					<table style="border-collapse: collapse; width: 70%; height: 40px;"
+						border="1px">
+						<th><a href="question_main.jsp">ì „ì²´</a></th>
+						<th><a href="product_inquiry.jsp">ìƒí’ˆë¬¸ì˜</a></th>
+						<th><a href="order_payment.jsp">ì£¼ë¬¸/ê²°ì œ</a></th>
+						<th><a href="delivery.jsp">ë°°ì†¡</a></th>
+						<th><a href="return.jsp">ë°˜í’ˆ/êµí™˜/í™˜ë¶ˆ</a></th>
+						<th><a href="saving.jsp">ì ë¦½/í˜œíƒ</a></th>
+						<th><a href="etc.jsp">íšŒì›/ê¸°íƒ€</a></th>
+					</table>
+					<hr style="width:1210px; float:left"><br>
+					<details>
+						<summary>
+							<b>Q : </b>ì ë¦½ë¬¸ì˜ ì§ˆë¬¸1
+						</summary>
+						<p>
+							<b>A : </b>ì ë¦½ë¬¸ì˜ ë‹µë³€2
+						</p>
+					</details>
+					<details>
+						<summary>
+							<b>Q : </b>ì ë¦½ë¬¸ì˜ ì§ˆë¬¸2
+						</summary>
+						<p>
+							<b>A : </b>>ì ë¦½ë¬¸ì˜ ë‹µë³€2
+						</p>
+					</details>
+				</article>
+			</div>
+
+		</div>
+		<!-- small -->
+		<div id="footer">
+			<jsp:include page="../include/footer.jsp"></jsp:include></div>
+	</div>
+	<!-- big -->
 </body>
 </html>
