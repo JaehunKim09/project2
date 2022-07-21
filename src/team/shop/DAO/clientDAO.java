@@ -63,12 +63,12 @@ public class clientDAO {
 				conn = DBManager.getConnection();
 				pstmt = conn.prepareStatement(sql);
 				
-				pstmt.setString(1, cVo.getName());
-				pstmt.setString(2, cVo.getId());
-				pstmt.setString(3, cVo.getPw());
-				pstmt.setString(4, cVo.getPhone());
-				pstmt.setString(5, cVo.getEmail());
-				pstmt.setString(6, cVo.getAddress());
+				pstmt.setString(1, cVo.getId());
+				pstmt.setString(2, cVo.getPw());
+				pstmt.setString(3, cVo.getName());
+				pstmt.setString(4, cVo.getEmail());
+				pstmt.setString(5, cVo.getAddress());
+				pstmt.setString(6, cVo.getPhone());
 				
 				pstmt.executeUpdate();//쿼리문 실행
 				

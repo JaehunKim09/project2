@@ -77,10 +77,10 @@ text-align:center;
 		<div id="mypage_table_div">
 		<table id="mypage_table">
 			<tr>
-				<th>구매내역</th>
+				<th><a href="ShopServlet?command=mypage_1&id=${sessionScope.loginUser.id}">구매내역</a></th>
 				<th>회원정보</th>
 				<th>내 구매후기</th>
-				<th>내 문의내역</th>
+				<th><a href="ShopServlet?command=mypage_6&id=${sessionScope.loginUser.id}">내 문의내역</a></th>
 		</table>
 		</div>
 		<div id="product_info">

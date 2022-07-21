@@ -1,6 +1,8 @@
 package team.shop.controller;
 
+
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -17,7 +19,7 @@ public class ShopServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String command = request.getParameter("command");
 		//console에서 요청받음 확인 목적
-		System.out.println("ShopServlet에서 요청받음을 확인 : "+command);
+		System.out.println("ShopServlet에서 요청받음을 확인 :"+command);
 		
 		//ActionFactory객체 호출
 		ActionFactory af = ActionFactory.getInstance();

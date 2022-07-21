@@ -7,7 +7,7 @@ public class p_orderVO {
 	private String id;
 	private int oNum;
 	private int oPrice;
-	private int pcnt;
+	private int cnt;
 	private String oName;
 	private String oAddress;
 	private String oPhone;
@@ -37,11 +37,11 @@ public class p_orderVO {
 	public void setoPrice(int oPrice) {
 		this.oPrice = oPrice;
 	}
-	public int getPcnt() {
-		return pcnt;
+	public int getcnt() {
+		return cnt;
 	}
-	public void setPcnt(int pcnt) {
-		this.pcnt = pcnt;
+	public void setcnt(int cnt) {
+		this.cnt = cnt;
 	}
 	public String getoName() {
 		return oName;

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -69,6 +70,7 @@ select {
 </style>
 </head>
 <body>
+<form name="frm" method="post" action="ShopServlet?command=mtm">
 	<div id="big">
 		<div id="small">
 			<div id="header">
@@ -116,13 +118,20 @@ select {
 						<option>제품문의</option>
 						<option>제품문의2</option>
 						<option>제품문의3</option>
-					</select> <br> <br> 제목 <input type="text" size="50px"> <br>
-					<br> 내용 <input type="text" size="50px" style="height: 100px;">
+						
+					</select> <br> <br> 
+					
+						
+					아이디&nbsp;&nbsp;&nbsp;${sessionScope.loginUser.id}<br><br>
+					
+					제목 <input type="text" size="50px" name="title"> <br>
+					<br> 
+					내용 <input type="text" size="50px" style="height: 100px;" name="content">
 				</div>
 				<br>
 				<div id="div_but">
-					<input type="submit" value="보내기" id="but"> <input
-						type="reset" value="취소" id="but">
+					<input type="submit" value="보내기" id="but" class="submit"> 
+					<input type="reset" value="취소" id="but">
 				</div>
 
 			</div>
@@ -132,5 +141,6 @@ select {
 			<jsp:include page="../include/footer.jsp"></jsp:include></div>
 	</div>
 	<!-- big -->
+	</form>
 </body>
 </html>

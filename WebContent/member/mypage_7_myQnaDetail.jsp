@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="EUC-KR"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@page import="java.sql.*" %>
 <!DOCTYPE html>
 <!-- 마이페이지 내 문의내역 -->
 <html>
@@ -59,6 +62,9 @@ border:1px solid gray;
 </style>
 </head>
 <body>
+
+<%-- <input type="hidden" name="title" value="${mtmVO}"> --%>
+
 	<div id="big">
 		<div id="small">
 			<div id="header">
@@ -67,33 +73,37 @@ border:1px solid gray;
 			<!-- header -->
 			<hr size="2" style="color: lightgray">
 			<div id="mypage_div">
-				<br> <span id="mypage_span">마이페이지 </span>&nbsp;&nbsp;&nbsp; 홍길동
+				<br> <span id="mypage_span">마이페이지 </span>&nbsp;&nbsp;&nbsp; ${sessionScope.loginUser.id}
 				회원님을 위한 마이페이지 입니다.
 				<table id="mypage_table">
 					<tr>
-						<th>구매내역</th>
+						<th><a href="ShopServlet?command=mypage_1&id=${sessionScope.loginUser.id}">구매내역</a></th>
 						<th>회원정보</th>
 						<th>내 구매후기</th>
-						<th>내 문의내역</th>
+						<th><a href="ShopServlet?command=mypage_6&id=${sessionScope.loginUser.id}">내 문의내역</a></th>
 				</table>
 		<br><br><br><br><br><br>
 		<hr style="width: 900px;">
-		<p>분류&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(데이터베이스)</p>
+		<p>분류&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
 		<hr style="width: 900px;">
-		<p>일자&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(데이터베이스)</p>
+		<p>일자&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${mtm.mDate}</p>
 		<hr style="width: 900px;">
-		<p>제목&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(데이터베이스)</p>
+		<p>제목&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${mtm.title}</p>
 		<hr style="width: 900px;">
-		<p>문의내용&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(데이터베이스)</p>
+		<p>문의내용&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${mtm.content}</p>
 		<hr style="width: 900px;">
 		<p>답변내용&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(데이터베이스)</p>
-			</div>
-			
+		
+			</div><!-- mypage_div -->
+			<input type="button" value="수정" onclick="location.href='ShopServlet?command=mtmUpdate&mNum=${mtmVo.mNum}'">
 			
 	</div><!-- small -->
+	
 	<div id="footer">
-		<jsp:include page="../include/footer.jsp"></jsp:include></div>
+		<jsp:include page="../include/footer.jsp"></jsp:include>
+	</div>
 	</div><!-- big -->
+	
 
 </body>
 </html>

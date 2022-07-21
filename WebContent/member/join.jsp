@@ -5,24 +5,24 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
-function join_check(){
-	
+function join_check(){	
 	var frmm = document.frm;
 	
 	if(frmm.name.value.length == 0){
 		alert("이름을 입력하세요.");
 		frmm.name.focus();
 		return false;
-	}else if(frmm.id.value.length==0){
+	}else if(frmm.id.value.length == 0){
 		alert("아이디를 입력하세요.");
 		frmm.id.focus();
 		return false;
-	}else if(frmm.pw.value.length==0){
+	}else if(frmm.pw.value.length == 0){
 		alert("비밀번호를 입력하세요.");
 		frmm.pw.focus();
 		return false;
-	}else if(frmm.name.value.length==0){
+	}else if(frmm.name.value.length == 0){
 		alert("이름을 입력하세요.");
 		frmm.name.focus();
 		return false;
@@ -30,56 +30,20 @@ function join_check(){
 		alert("비밀번호가 다릅니다.");
 		frmm.pwCheck.focus();
 		return false;
-	}else if(frmm.phone.value.length==0){
+	}else if(frmm.phone.value.length == 0){
 		alert("연락처를 입력하세요.");
 		frmm.phone.focus();
 		return false;
-	}else if(frmm.email.value.length==0){
+	}else if(frmm.email.value.length == 0){
 		alert("이메일을 입력하세요.");
 		frmm.email.focus();
 		return false;
-	}else if(frmm.address.value.length==0){
+	}else if(frmm.address.value.length == 0){
 		alert("주소를 입력하세요.");
-		frmm.address1.focus();
+		frmm.address.focus();
 		return false;
 	}else
-		frmm.action="ShopServlet?command=join";
 		return true;
-}
-/* email-domain 넣기 및 유효성 검사 */
-var email_rule =  /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
-var email_id =$("#email_id").val();
-var email_domain =$("#email_domain").val();
-var mail ="";
-
-
-if(!email_id){
-    alert("이메일을 입력해주세요");
-  $("#email_id").focus();
-  return false;
-}
-if(!email_domain){
-    alert("도메인을 입력해주세요");
-  $("#email_domain").focus();
-  return false;
-}
-mail = email_id+"@"+email_domain;
-$("#mail").val(mail);  
-
-if(!email_rule.test(mail)){
-    alert("이메일을 형식에 맞게 입력해주세요.");
-  return false;
-}
-
-function setEmailDomain(domain){
-      $("#email_domain").val(domain);
-}
-
-function sum_Address(){
-	var add = document.getElementById("address_kakao");
-	add += document.getElementById("address_detail");
-	
-	return add;
 }
 </script>
 <style>
@@ -113,19 +77,24 @@ html, body {
 	height: 45px;
 	margin: auto;
 }
+#address{
+margin-top:35px;
+}
+#address_detail{
+
+}
 
 #email {
-	width: 150px;
-	height: 80px;
-	margin: auto;
+	display:inline-block;
+	position:absolute;
+	bottom:425px;
+	left:877px;
 }
 
 hr {
 	width: 50%;
 	background-color: black;
 }
-#email_id{display:inline-block;}
-#email_domain{display:inline-block;}
 </style>
 </head>
 
@@ -140,7 +109,7 @@ hr {
 				<span style="font-size: 25px">회원가입</span>
 			</div>
 			<hr>
-	<form name="frm" method="post">
+	<form name="frm" method="post" action="ShopServlet?command=join">
 			<div id="name">
 				이름 <input type="text" name="name">
 			</div>
@@ -162,9 +131,11 @@ hr {
 			</div>
 			<br>
 			<div id="email">
-			<input type="text" id="email_id" class="form_w200" value="" placeholder="이메일" maxlength="18" name="email"/> @ 
-				<select class="select" title="이메일 도메인 주소 선택" onclick="setEmailDomain(this.value);return false;">
-   					<option value="">-선택-</option>
+			이메일<br>
+			<input type="text" placeholder="이메일 주소 입력" name="emailId"/> @ 
+			<input type="text" title="이메일 도메인 입력" name="emailDomain">
+				<select title="이메일 도메인 주소 선택" onchange="this.form.emailDomain.value=this[this.selectedIndex].value;">
+   					<option value="" selected="selected">-선택-</option>
     				<option value="naver.com">naver.com</option>
 				    <option value="gmail.com">gmail.com</option>
 				    <option value="hanmail.net">hanmail.net</option>
@@ -172,28 +143,19 @@ hr {
 				    <option value="korea.com">korea.com</option>
 				    <option value="nate.com">nate.com</option>
 				    <option value="yahoo.com">yahoo.com</option>
+				    <option value="">직접입력</option>
 				</select>
-			</div>
- 				<!--이메일 <input type="text" placeholder="선택입력" name="email">
-					<span name="email">@</span>
-				<select>
-					<option value="choice">선택</option>
-					<option value="naver" name="email">naver.com</option>
-					<option value="daum" name="email">daum.net</option>
-					<option value="nate" name="email">nate.com</option>
-					<option value="not_choice">선택 안함</option>
-				</select> -->
-							
+			</div>		
 			<div id="address">
-				주소 <input type="text" id="address_kakao" readonly>
+				주소 <input type="text" id="address_kakao" readonly name="address1">
 			</div>
 			<br>
 			<div id="address_detail">
-				상세주소 <input type="text" id="address_detail">
+				상세주소 <input type="text" id="address_detail" name="address2">
 			</div>
 			<br><br>
 			<div id="join">
-				<input type="submit" id="registerbut" value="가입하기">
+				<input type="submit" id="registerbut" value="가입하기" onclick="return join_check()">
 			</div>
 	</form>
 			<br>
@@ -204,8 +166,7 @@ hr {
 		</div>
 	</div>
 </body>
-<script
-	src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+
 <script>
 	window.onload = function() {
 		document

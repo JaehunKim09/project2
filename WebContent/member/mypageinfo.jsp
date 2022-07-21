@@ -56,7 +56,7 @@ html, body {
 	<div id="big">
 		<div id="small">
 			<div id="header">
-				<jsp:include page="../header_notlogin.jsp"></jsp:include>
+				<jsp:include page="../include/header_notlogin.jsp"></jsp:include>
 			</div>
 
 			<div id="mypage_table_div">
@@ -120,8 +120,8 @@ html, body {
 		</div>	
 		
 		<div id="footer">
-			<jsp:include page="../footer.jsp"></jsp:include></div>
-</div>
+			<jsp:include page="../include/footer.jsp"></jsp:include></div>
+	</div>
 </body>
 <script
 	src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>

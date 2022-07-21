@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@page import="java.sql.*" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -71,6 +74,7 @@ height:50px;
 </style>
 </head>
 <body>
+<form name="formm" method="post">
 <div id="big">
 		<div id="small">
 			<div id="header">
@@ -80,33 +84,38 @@ height:50px;
 			<hr size="2" style="color: lightgray">
 			<div id="mypage_div">
 				<br>
-				<span id="mypage_span">마이페이지 </span>&nbsp;&nbsp;&nbsp; 홍길동 회원님을 위한
+				<span id="mypage_span">마이페이지 </span>&nbsp;&nbsp;&nbsp; ${sessionScope.loginUser.id}회원님을 위한
 				마이페이지 입니다.
 				<table id="mypage_table">
 					<tr>
-						<th>구매내역</th>
+						<th><a href="ShopServlet?command=mypage_1&id=${sessionScope.loginUser.id}">구매내역</a></th>
 						<th>회원정보</th>
 						<th>내 구매후기</th>
-						<th>내 문의내역</th>
+						<th><a href="ShopServlet?command=mypage_6&id=${sessionScope.loginUser.id}">내 문의내역</a></th>
 				</table>
 			</div>
 			<br><br><br><br><br>
 			<div id="product_Info">
 			<span id="span">문의내역&nbsp;&nbsp;&nbsp; </span>
 				<input type='button' class='btn' name='btn' value='자주하는질문'> 
-				<input type='button' class='btn' name='btn' value='1:1문의하기'>
+				<input type='button' class='btn' name='btn' value='1:1문의하기' onclick="location.href='ShopServlet?command=ask'">
 			<br><br>
+			
 			<table id="question_table1">
 		<tr style="background:lightblue">
+			<th colspan="2">번호</th>
 			<th colspan="2">일자</th>
 			<th colspan="2">제목</th>
-			<th colspan="2">상태</th>
+			
 		</tr>
+		<c:forEach items="${mtmVO}" var="mtmVo">
 		<tr>	
-			<th colspan="2">1</th>
-			<th colspan="2">2</th>
-			<th colspan="2">3</th>
-			</tr>
+			<th colspan="2">${mtmVo.mNum}</th>
+			<th colspan="2"><fmt:formatDate value="${mtmVo.mDate}" type="date"/></th>
+			<th colspan="2"><a href="ShopServlet?command=mypage_7&mNum=${mtmVo.mNum}">${mtmVo.title}</a></th>
+			
+		</tr>
+		</c:forEach>
 		</table>
 		<br><br>
 				<table id="question_table2">
@@ -116,7 +125,7 @@ height:50px;
 			<th colspan="2">답변일자</th>
 		</tr>
 		<tr>	
-			<th colspan="2">1</th>
+			<th colspan="2">1ㅁㄴㅇ</th>
 			<th colspan="2">2</th>
 			<th colspan="2">3</th>
 			</tr>
@@ -126,5 +135,6 @@ height:50px;
 <div id="footer">
 			<jsp:include page="../include/footer.jsp"></jsp:include></div>
 </div><!-- big -->
+</form>
 </body>
 </html>

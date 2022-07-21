@@ -6,6 +6,8 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+
+
 import team.shop.DTO.productVO;
 import team.util.DBManager;
 
@@ -94,5 +96,38 @@ public class productDAO {
 				DBManager.close(conn, pstmt, rs);
 			}
 			return pVo;
+		}
+		
+		public productVO insertProduct(productVO pVO) {
+			
+			String sql ="insert into product values(pNum_seq.nextVal,?,?,?,?,?,?)";
+			
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+			
+			productVO pVo = null;
+			try {
+				conn = DBManager.getConnection();
+				pstmt = conn.prepareStatement(sql);
+				
+				/* pstmt.setInt(1, pVO.getpNum()); */
+				pstmt.setString(1, pVO.getpName());
+				pstmt.setInt(2, pVO.getpPrice());
+				pstmt.setString(3, pVO.getpImg());
+				pstmt.setString(4,	pVO.getpShortInfo());
+				pstmt.setString(5,	pVO.getpDetailInfo());
+				pstmt.setString(6, pVO.getpCategory());
+				
+				pstmt.executeUpdate(sql);
+				
+				
+			}catch (Exception e) {
+				e.printStackTrace();
+			}finally {
+				DBManager.close(conn, pstmt);
+			}
+			
+			return pVO;
+			
 		}
 }

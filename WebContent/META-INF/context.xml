@@ -7,8 +7,8 @@
 	maxTotal="100"
 	maxIdle="30"
 	maxWaitMillis="10000"
-	username="system"
-	password="1234"
+	username="hr"
+	password="hr"
 	driverClassName="oracle.jdbc.OracleDriver"
 	url="jdbc:oracle:thin:@localhost:1521:xe"		
 	/>

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="EUC-KR"%>
+	<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,8 +24,7 @@ html, body {
 
 #product_Info {
 	padding-top: 50px;
-	margin-left: 600px;
-	width:900px;
+	margin-left: 28%;
 }
 
 #mypage_span {
@@ -41,15 +41,11 @@ text-align:left;
 }
 #mypage_table{
 position:absolute;
-top:72px;
+top:100px;
 border-collapse:collapse;
 border:1px solid gray;
 color:gray;
 margin-top:10px;
-}
-#mypage_table th:hover {
-	background: black;
-	color: white;
 }
 #mypage_table th{
 border:1px solid gray;
@@ -79,10 +75,10 @@ text-align:center;
 				마이페이지 입니다.
 				<table id="mypage_table">
 					<tr>
-						<th>구매내역</th>
+						<th><a href="ShopServlet?command=mypage_1&id=${sessionScope.loginUser.id}">구매내역</a></th>
 						<th>회원정보</th>
 						<th>내 구매후기</th>
-						<th>내 문의내역</th>
+						<th><a href="ShopServlet?command=mypage_6&id=${sessionScope.loginUser.id}">내 문의내역</a></th>
 				</table>
 			</div>
 			<br><br><br><br><br><br>
@@ -122,10 +118,6 @@ text-align:center;
 			<jsp:include page="../include/footer.jsp"></jsp:include></div>
 	</div>
 	<!-- big -->
-
-
-
-
 
 
 </body>
