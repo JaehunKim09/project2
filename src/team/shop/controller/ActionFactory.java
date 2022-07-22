@@ -16,6 +16,7 @@ import team.shop.controller.action.ProductDetailAction;
 import team.shop.controller.action.ReviewAction;
 import team.shop.controller.action.askAction;
 import team.shop.controller.action.mtmUpdate;
+import team.shop.controller.action.mtmUpdateForm;
 import team.shop.controller.action.MyPage7Action;
 import team.shop.controller.action.MyPage6Action;
 import team.shop.controller.action.Payment;
@@ -75,6 +76,8 @@ public class ActionFactory {
 			action = new MyPage7Action();
 		}else if(command.equals("mtmUpdate")) {
 			action = new mtmUpdate();
+		}else if(command.equals("mtmUpdateForm")) {
+			action = new mtmUpdateForm();
 		}
 		
 	

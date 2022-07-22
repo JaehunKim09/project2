@@ -72,7 +72,7 @@ id      varchar2(15)   references client(id), --FK : client(id)
 mNum    number         not null primary key,
 title   varchar2(100)  not null,
 content varchar2(4000) not null,
---reply   varchar2(4000),
+reply   varchar2(4000),
 mDate   TimeStamp      default sysdate not null
 );
 select * from mtm;
@@ -90,3 +90,22 @@ create sequence pNum_seq start with 1 increment by 1;
 create sequence oNum_seq start with 1 increment by 1;
 create sequence rNum_seq start with 1 increment by 1;
 create sequence mNum_seq start with 1 increment by 1;
+
+--View1
+create or replace view mypage1_view
+as
+select c.id, p.pNum, p.pName, p.pShortInfo, p.pImg, o.oNum, o.oDate, o.oPrice, o.cnt
+from CLIENT c, PRODUCT p, PRODUCT_ORDER o
+where p.pNum = o.pNum and c.id = o.id;
+
+select * from mypage1_view;
+
+--View2
+create or replace view mypage5_view
+as
+select c.id, p.pNum, p.pName, p.pImg, r.content, r.rDate
+from CLIENT c, PRODUCT p, REVIEW r
+where p.pNum = r.pNum and c.id = r.id;
+
+drop view mypage5_view;
+select * from mypage5_view;

@@ -51,10 +51,11 @@ public class mtmDAO {
 		}
 		return mtmVO;
 		
-	}
+	}//insertmtm끝
+	
 	//내가 문의한 전체내역 조회
 	public ArrayList<mtmVO> selectMtm(String id) {
-		String sql="select * from mtm where id=?";
+		String sql="select * from mtm where id=? order by mDate desc";
 		
 		ArrayList<mtmVO> mtmVO = new ArrayList<mtmVO>();
 		
@@ -85,7 +86,8 @@ public class mtmDAO {
 		}
 		return mtmVO;
 		
-	}
+	}//selectMtm끝
+	
 	//내가 문의한 내역 조회
 	public mtmVO selectOneMtm(String mNum) {
 		String sql="select * from mtm where mNum=?";
@@ -96,6 +98,7 @@ public class mtmDAO {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
+			
 			conn = DBManager.getConnection();
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, mNum);
@@ -116,21 +119,30 @@ public class mtmDAO {
 			DBManager.close(conn, pstmt, rs);
 		}
 		return mtmVo;
-	}
+	}//selectOneMtm끝
+	
 	//내가 문의한 내역 수정
 	
 	
-	public void mtmUpdate(mtmVO mtmVo) {
+	public static mtmVO mtmUpdate(mtmVO mtmVo) {
 		String sql = "update mtm set title=?, content=? where mNum=?";
 		
 		Connection conn = null;
 		PreparedStatement pstmt = null;
+		
+		
 		 try {
+			 
 			 conn = DBManager.getConnection();
 			pstmt = conn.prepareStatement(sql);
 			
+			
 			pstmt.setString(1, mtmVo.getTitle());
+
 			pstmt.setString(2, mtmVo.getContent());
+			pstmt.setInt(3, mtmVo.getmNum());
+			
+			
 			
 			pstmt.executeUpdate();
 			
@@ -139,7 +151,8 @@ public class mtmDAO {
 		}finally {
 			DBManager.close(conn, pstmt);
 		}
-		
-	} 
+		return mtmVo;
+	}//mtmUpdate끝
 	
+
 }

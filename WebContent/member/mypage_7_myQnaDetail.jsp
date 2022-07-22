@@ -95,14 +95,14 @@ border:1px solid gray;
 		<p>답변내용&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(데이터베이스)</p>
 		
 			</div><!-- mypage_div -->
-			<input type="button" value="수정" onclick="location.href='ShopServlet?command=mtmUpdate&mNum=${mtmVo.mNum}'">
+			<input type="button" value="수정" onclick="location.href='ShopServlet?command=mtmUpdateForm&mNum=${mtm.mNum}'">
 			
 	</div><!-- small -->
-	
+		</div><!-- big -->
 	<div id="footer">
 		<jsp:include page="../include/footer.jsp"></jsp:include>
 	</div>
-	</div><!-- big -->
+
 	
 
 </body>

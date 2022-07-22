@@ -10,22 +10,22 @@ import javax.servlet.http.HttpServletResponse;
 import team.shop.DAO.mtmDAO;
 import team.shop.DTO.mtmVO;
 
-public class mtmUpdate implements Action {
+public class mtmUpdateForm implements Action {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String url="/member/mypage_1_purchaseList.jsp";
+		String url="/member/mtmUpdate.jsp";
 		
-		mtmVO mtmVo = new mtmVO();
-	
-		mtmVo.setmNum(Integer.parseInt(request.getParameter("mNum")));
-		mtmVo.setTitle(request.getParameter("title"));
-		mtmVo.setContent(request.getParameter("content"));
+		String mNum = request.getParameter("mNum");
 		
 		mtmDAO mtmDao = mtmDAO.getInstance();
-		mtmDao.mtmUpdate(mtmVo);
 		
-		/*new MyPage6Action().execute(request, response);*/
+		mtmVO mtmVo = mtmDao.selectOneMtm(mNum);
+		
+		request.setAttribute("mtm", mtmVo);
+		
+		
+		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 		dispatcher.forward(request, response);
 		
