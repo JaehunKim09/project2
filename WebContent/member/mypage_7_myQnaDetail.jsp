@@ -84,7 +84,7 @@ border:1px solid gray;
 				</table>
 		<br><br><br><br><br><br>
 		<hr style="width: 900px;">
-		<p>분류&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+		<p>분류&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${mtm.mKind}</p>
 		<hr style="width: 900px;">
 		<p>일자&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${mtm.mDate}</p>
 		<hr style="width: 900px;">

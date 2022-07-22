@@ -30,6 +30,7 @@ public class mtmWriteAction implements Action {
 			mtmVo.setId(request.getParameter("id"));
 			mtmVo.setTitle(request.getParameter("title"));
 			mtmVo.setContent(request.getParameter("content"));
+			mtmVo.setmKind(request.getParameter("mKind"));
 			
 			mtmDAO mtmDao = mtmDAO.getInstance();
 			mtmDAO.insertmtm(mtmVo,	loginUser.getId());

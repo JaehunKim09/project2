@@ -114,10 +114,11 @@ select {
 
 				<br>
 				<div id="div1">
-					분류 <select>
-						<option>제품문의</option>
-						<option>제품문의2</option>
-						<option>제품문의3</option>
+					분류 
+					<select name="mKind" onchange="this.form.kind.value=this[this.selectedIndex].value;">
+						<option value="[제품문의1]">[제품문의1]</option>
+						<option value="[제품문의2]">[제품문의2]</option>
+						<option value="[제품문의3]">[제품문의3]</option>
 						
 					</select> <br> <br> 
 					

@@ -9,6 +9,15 @@ public class mtmVO {
 	private String content;
 	private String reply;
 	private Timestamp mDate;
+	private String mKind;
+	
+	
+	public String getmKind() {
+		return mKind;
+	}
+	public void setmKind(String mKind) {
+		this.mKind = mKind;
+	}
 	public String getId() {
 		return id;
 	}

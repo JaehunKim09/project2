@@ -21,6 +21,7 @@ public class mtmUpdate implements Action {
 		mtmVo.setmNum(Integer.parseInt(request.getParameter("mNum")));
 		mtmVo.setTitle(request.getParameter("title"));
 		mtmVo.setContent(request.getParameter("content"));
+		mtmVo.setmKind(request.getParameter("mKind"));
 		
 		mtmDAO mtmDao = mtmDAO.getInstance();
 		mtmDao.mtmUpdate(mtmVo);

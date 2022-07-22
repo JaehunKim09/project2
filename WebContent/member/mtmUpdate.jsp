@@ -115,16 +115,17 @@ select {
 
 				<br>
 				<div id="div1">
-					분류 <select>
-						<option>제품문의</option>
-						<option>제품문의2</option>
-						<option>제품문의3</option>
+					분류 <select name="mKind" onchange="this.form.kind.value=this[this.selectedIndex].value;">
+						<option>[제품문의1]</option>
+						<option>[제품문의2]</option>
+						<option>[제품문의3]</option>
 						
 					</select> <br> <br> 
 					
 						
 					아이디&nbsp;&nbsp;&nbsp;${sessionScope.loginUser.id}<br><br>
 					
+					분류
 					제목 <input type="text" size="50px" name="title" value="${mtm.title}"> <br>
 					<br> 
 					내용 <input type="text" size="50px" style="height: 100px;" name="content" value="${mtm.content}">

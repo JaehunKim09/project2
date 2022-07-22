@@ -70,6 +70,7 @@ rDate      TimeStamp    default sysdate not null
 create table mtm(
 id      varchar2(15)   references client(id), --FK : client(id)
 mNum    number         not null primary key,
+mKind	varchar2(20)   not null,
 title   varchar2(100)  not null,
 content varchar2(4000) not null,
 reply   varchar2(4000),

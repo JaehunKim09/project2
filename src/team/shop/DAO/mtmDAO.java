@@ -23,7 +23,7 @@ public class mtmDAO {
 	//문의내역 입력
 	public static mtmVO insertmtm(mtmVO mtmVo,String loginUser) {
 		
-		String sql = "insert into mtm(mNum,id,title,content) values(mNum_seq.nextVal,?,?,?)";
+		String sql = "insert into mtm(mNum,id,title,content,mKind) values(mNum_seq.nextVal,?,?,?,?)";
 		
 		Connection conn=null;
 		PreparedStatement pstmt = null;
@@ -41,6 +41,7 @@ public class mtmDAO {
 			pstmt.setString(3, mtmVo.getContent());
 			//pstmt.setString(5, mtmVo.getReply());
 			//pstmt.setTimestamp(4, mtmVo.getmDate());
+			pstmt.setString(4, mtmVo.getmKind());
 			
 			pstmt.executeUpdate();
 			
@@ -111,6 +112,7 @@ public class mtmDAO {
 				mtmVo.setTitle(rs.getString("title"));
 				mtmVo.setContent(rs.getString("content"));
 				mtmVo.setmDate(rs.getTimestamp("mDate"));
+				mtmVo.setmKind(rs.getString("mKind"));
 				
 			}
 		}catch (Exception e) {
@@ -125,7 +127,7 @@ public class mtmDAO {
 	
 	
 	public static mtmVO mtmUpdate(mtmVO mtmVo) {
-		String sql = "update mtm set title=?, content=? where mNum=?";
+		String sql = "update mtm set mKind=?, title=?, content=? where mNum=?";
 		
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -136,13 +138,10 @@ public class mtmDAO {
 			 conn = DBManager.getConnection();
 			pstmt = conn.prepareStatement(sql);
 			
-			
-			pstmt.setString(1, mtmVo.getTitle());
-
-			pstmt.setString(2, mtmVo.getContent());
-			pstmt.setInt(3, mtmVo.getmNum());
-			
-			
+			pstmt.setString(1, mtmVo.getmKind());
+			pstmt.setString(2, mtmVo.getTitle());
+			pstmt.setString(3, mtmVo.getContent());
+			pstmt.setInt(4, mtmVo.getmNum());
 			
 			pstmt.executeUpdate();
 			
