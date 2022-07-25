@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
+import team.shop.DTO.clientVO;
 import team.shop.DTO.reviewVO;
 import team.util.DBManager;
 
@@ -53,8 +54,65 @@ public class reviewDAO {
 		return reviewList;
 	}
 
-
+	public void insertReview(reviewVO rVo) {
+		
+		String sql = "insert into review(pNum,id,rNum,content) values(?,?,rNum_seq.nextval,?)";
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		
+		try {
+			conn = DBManager.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, rVo.getpNum());
+			pstmt.setString(2, rVo.getId());
+			pstmt.setString(3, rVo.getContent());
+			
+			pstmt.executeUpdate();//쿼리문 실행
+			
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			DBManager.close(conn, pstmt);
+		}
+	}
 	
+	public ArrayList<reviewVO> listMyreview(String id) {
+		ArrayList<reviewVO> list = new ArrayList<reviewVO>();
+		String sql = "select * from mypage5_view where id = ?";
+		
+		reviewVO rVo = null;
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			conn = DBManager.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, id);
+			
+			rs = pstmt.executeQuery();
+			
+			while (rs.next()) {
+				rVo = new reviewVO();
+				
+				rVo.setpName(rs.getString("pName"));
+				rVo.setpNum(rs.getInt("pNum"));
+				rVo.setId(rs.getString("id"));
+				rVo.setContent(rs.getString("content"));
+				rVo.setpImg(rs.getString("pImg"));
+				rVo.setrDate(rs.getTimestamp("rDate"));
+							
+				list.add(rVo);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			DBManager.close(conn, pstmt, rs);
+		}
+		return list;
+	}
 	}
 
 	

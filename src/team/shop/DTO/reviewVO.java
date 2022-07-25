@@ -3,13 +3,28 @@ package team.shop.DTO;
 import java.sql.Timestamp;
 
 public class reviewVO {
+	private String pName;
 	private int pNum;
+	private String pImg;
 	private String id;
 	private int oNum;
 	private int rNum;
 	private String content;
 	private String rImg;
 	private Timestamp rDate;
+	
+	public String getpName() {
+		return pName;
+	}
+	public void setpName(String pName) {
+		this.pName = pName;
+	}
+	public String getpImg() {
+		return pImg;
+	}
+	public void setpImg(String pImg) {
+		this.pImg = pImg;
+	}
 	public int getpNum() {
 		return pNum;
 	}

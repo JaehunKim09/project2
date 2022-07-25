@@ -44,6 +44,14 @@ public class clientVO {
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
+	@Override
+	public String toString() {
+		return "clientVO [id=" + id + ", pw=" + pw + ", name=" + name + ", email=" + email + ", address=" + address
+				+ ", phone=" + phone + ", getId()=" + getId() + ", getPw()=" + getPw() + ", getName()=" + getName()
+				+ ", getEmail()=" + getEmail() + ", getAddress()=" + getAddress() + ", getPhone()=" + getPhone()
+				+ ", getClass()=" + getClass() + ", hashCode()=" + hashCode() + ", toString()=" + super.toString()
+				+ "]";
+	}
 	
 
 }

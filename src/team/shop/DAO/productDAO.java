@@ -6,8 +6,6 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-
-
 import team.shop.DTO.productVO;
 import team.util.DBManager;
 
@@ -97,37 +95,75 @@ public class productDAO {
 			}
 			return pVo;
 		}
-		
-		public productVO insertProduct(productVO pVO) {
+		//모든 상품을 DB에서 가져오는 메소드
+		public List<productVO> selectAllProducts() {
+			String sql = "select * from product";
 			
-			String sql ="insert into product values(pNum_seq.nextVal,?,?,?,?,?,?)";
+			List<productVO> list = new ArrayList<productVO>();
 			
 			Connection conn = null;
 			PreparedStatement pstmt = null;
+			ResultSet rs = null;
 			
-			productVO pVo = null;
+			// try/catch문 밖에서 선언 해 주어야 return 가능
+			productVO pVo = null; 
+			
+			try {
+				conn = DBManager.getConnection();
+				pstmt = conn.prepareStatement(sql);				
+				rs = pstmt.executeQuery(); //데이터 rs에 저장
+				
+				while(rs.next()) { // rs에 들어있는 정보를 bVo에 세팅
+					pVo = new productVO();
+					//VO의 setter의 매개변수 타입과 일치되게 저장할 것
+					pVo.setpNum(rs.getInt("pNum"));
+					pVo.setpName(rs.getString("pName"));
+					pVo.setpPrice(rs.getInt("pPrice"));
+					pVo.setpImg(rs.getString("pImg"));
+					pVo.setpShortInfo(rs.getString("pShortInfo"));
+					pVo.setpDetailInfo(rs.getString("pDetailInfo"));
+					pVo.setpCategory(rs.getString("pCategory"));
+					
+					list.add(pVo);
+				}
+			}catch(Exception e) {
+				e.printStackTrace();
+			}finally {
+				DBManager.close(conn, pstmt, rs);
+			}
+			return list;
+		}
+
+		public ArrayList<productVO> searchProduct(String pName){
+			ArrayList<productVO> list = new ArrayList<productVO>();
+			String sql = "select * from product where pName like '%'||?||'%'";
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
 			try {
 				conn = DBManager.getConnection();
 				pstmt = conn.prepareStatement(sql);
-				
-				/* pstmt.setInt(1, pVO.getpNum()); */
-				pstmt.setString(1, pVO.getpName());
-				pstmt.setInt(2, pVO.getpPrice());
-				pstmt.setString(3, pVO.getpImg());
-				pstmt.setString(4,	pVO.getpShortInfo());
-				pstmt.setString(5,	pVO.getpDetailInfo());
-				pstmt.setString(6, pVO.getpCategory());
-				
-				pstmt.executeUpdate(sql);
-				
-				
-			}catch (Exception e) {
+				pstmt.setString(1, pName);
+				rs = pstmt.executeQuery();
+
+				while(rs.next()) {
+					productVO pVo = new productVO();
+					pVo.setpNum(rs.getInt("pNum"));
+					pVo.setpName(rs.getString("pName"));
+					pVo.setpPrice(rs.getInt("pPrice"));
+					pVo.setpImg(rs.getString("pImg"));
+					pVo.setpShortInfo(rs.getString("pShortInfo"));
+					pVo.setpDetailInfo(rs.getString("pDetailInfo"));
+					pVo.setpCategory(rs.getString("pCategory"));
+					
+					list.add(pVo);
+				}
+
+			}catch(Exception e) {
 				e.printStackTrace();
 			}finally {
-				DBManager.close(conn, pstmt);
+				DBManager.close(conn, pstmt, rs);
 			}
-			
-			return pVO;
-			
+			return list;
 		}
 }

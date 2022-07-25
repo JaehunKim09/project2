@@ -1,14 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+    pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>결제페이지</title>
+<title>Insert title here</title>
 <style>
 html, body {
 	margin: 0;
@@ -22,9 +22,39 @@ html, body {
 }
 
 #small {
+	margin-left:500px;
 	padding-bottom: 200px; /* footer의 높이 */
 }
 
+.cart_img{
+width:250px;
+height:120px;
+}
+#cartlist td{
+width:400px;
+}
+.td{
+text-align:center;
+width:300px;
+}
+.cnt{
+font-weight:bold;
+color:blue;
+}
+.a_tag2{
+text-decoration:none;
+color:black;
+}
+.a_tag2:hover{
+color:red;
+}
+#order_btn{
+width:100px;
+height:30px;
+background:black;
+color:white;
+margin-left:1050px;
+}
 table {
 	border-collapse: collapse;
 	padding: 5px;
@@ -44,50 +74,29 @@ td {
 .co {
 	background-color: #ffdab9;
 }
-
-.button {
-	background-color:black;
-	color: #FFFFFF;
-	width: 200px;
-	margin: auto;
-	display: inline-block;
-}
-
 .top {
 	border: 1px solid;
-}
-
-/* id */
-#info_tab {
-	width: 407px;
-	height: 100px;
-	/* text-align:center; */
-}
-
+	}
 #wid {
 	width: 150px;
-}
-
-#p_container {
-	margin-left:600px;
 }
 </style>
 </head>
 <body>
 	<div id="big">
-		<div id="small">
-			<div id="header">
-				<jsp:include page="../include/header_notlogin.jsp"></jsp:include>
-			</div>
-			<hr>
-			<div id="p_container">
-			<form method="post" action="ShopServlet">
-			<input type="hidden" name="command" value="insert_order">
-			<input type="hidden" name="oPrice" value="${param.pPrice*order.cnt+3000}">
-			<input type="hidden" name="id" value="${sessionScope.loginUser.id}">
-			<input type="hidden" name="pNum" value="${order.pNum}">
-			<input type="hidden" name="cnt" value="${order.cnt}">
-				<table class="top">
+	<jsp:include page="../include/header_notlogin.jsp"/>
+	<hr>
+		<div id="small">	
+<article>
+	<h2>장바구니</h2>
+	<form name="formm" method="post" action="ShopServlet">
+	<input type="hidden" name="command" value="cart_payment"/>
+		<c:choose>
+			<c:when test="${cartList.size() == 0}">
+				<div id="cart_null">장바구니가 비었습니다.</div>
+			</c:when>
+			<c:otherwise>
+			<table class="top">
 					<h3>주문자 정보</h3>
 					<tr>
 						<td class="co" id="wid">보내는 분</td>
@@ -99,6 +108,7 @@ td {
 					</tr>
 				</table>
 				<h3>배송지 정보</h3>
+				
 				<table class="top">
 					<tr>
 						<td class="co" id="wid">받으시는 분</td>
@@ -122,37 +132,51 @@ td {
 						<td><input type="text" size="50" name="rec_message"></td>
 					</tr>
 				</table>
-				<h3>결제정보</h3>
-				<table id="info_tab" class="top">
-					<thead>
-						<tr>
-							<th class="co">상품가격</th>
-							<th class="co">수 &nbsp;&nbsp;&nbsp;량</th>
-							<th class="co">결제금액</th>
-							<th class="co">배송비</th>
-							<th class="co">총 결제금액</th>
-						</tr>
-						<tr>
-							<td style="text-align: center"><fmt:formatNumber value="${param.pPrice}" type="currency"/></td>
-							<td style="text-align: center">${order.cnt}</td>
-							<td style="text-align: center"><fmt:formatNumber value="${param.pPrice*order.cnt}" type="currency"/></td>
-							<td style="text-align: center"><fmt:formatNumber value="3000" type="currency"/></td>
-							<td style="text-align: center"><fmt:formatNumber value="${param.pPrice*order.cnt+3000}" type="currency"/></td>
-						</tr>
+				
+				<table id="cartList">
+					<tr>
+						<th>상품명</th><th>수 량</th><th>가 격</th><th>삭 제</th>
+					</tr>
 
-					<table>
-						<td style="padding-left:0"><input type="submit" value="결제하기" class="button">
-							<input type="reset" value="취소하기" class="button"></td>
-					</table>
+					<c:forEach items="${cartList}" var="cartVO">
+						<tr>
+							<td><a href="ShopServlet?command=product_detail&pNum=${cartVO.pNum}" class="a_tag2"><img class="cart_img" src="${cartVO.pImg}">
+							<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${cartVO.pName}</a></td>
+							<td class="td cnt">${cartVO.cnt}</td>
+							<td class="td"><fmt:formatNumber value="${cartVO.pPrice*cartVO.cnt}" type="currency" /></td>
+							<td class="td"><a href="ShopServlet?command=cart_delete&cNum=${cartVO.cNum}" class="a_tag2">삭제</a>
+							</td>
+						</tr>
+					</c:forEach>
+					<tr style="background-color:lightgray">
+						<th colspan="2">상품 결제금액</th>
+						<th colspan="2"><fmt:formatNumber value="${totalPrice}" type="currency" /><br></th>
+					</tr>
+					<tr style="background-color:lightgray">
+						<th colspan="2">배송비</th>
+						<th colspan="2"><fmt:formatNumber value="3000" type="currency"/></th>
+					</tr>
+					<tr style="background-color:black">
+						<th style="color:white" colspan="2">총 결제금액</th>
+						<th style="color:white" colspan="2"><fmt:formatNumber value="${totalPrice+3000}" type="currency"/><br></th>
+					</tr>
 				</table>
-				</form>
-			</div>
+							<c:if test="${cartList.size() != 0}">
+			<br><br>
+				<input type="submit" value="결제하기" id="order_btn" style="font-weight:bold">
+					
+			</c:if>
+			</c:otherwise>
+			
+		</c:choose>
+</form>
+		<div class="clear"></div>
+	
+</article>
+			<jsp:include page="../include/footer.jsp"></jsp:include>
 		</div>
-		<!-- small -->
-		<div id="footer">
-			<jsp:include page="../include/footer.jsp"></jsp:include></div>
 	</div>
-	<!-- big -->
 </body>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>

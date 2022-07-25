@@ -59,8 +59,7 @@ margin-top:10px;
 border:1px solid gray;
 }
 #mypage_table th:hover{
-background:black;
-color:white;
+color:red;
 }
 #loginbox {
 	width: 60%;
@@ -117,7 +116,14 @@ span{
 	float: right;
 	color: #ffffff;
 }
-
+.a_tag2{
+text-decoration:none;
+color:black;
+}
+.a_tag2:hover{
+background:black;
+color:white;
+}
 </Style>
 </head>
 <body>
@@ -126,19 +132,21 @@ span{
 			<div id="header">
 				<jsp:include page="../include/header_notlogin.jsp"></jsp:include>
 			</div><!-- header -->
-			<hr size="2" style="color:lightgray">
+
+		 <hr size="2" style="color:lightgray">
 			<div id="mypage_div">
 		<br><span id="mypage_span">마이페이지
-		</span>&nbsp;&nbsp;&nbsp; 홍길동 회원님을 위한 마이페이지 입니다.
+		</span>&nbsp;&nbsp;&nbsp;
+		<b>${sessionScope.loginUser.id}(${sessionScope.loginUser.name})</b>회원님을 위한 마이페이지 입니다.
 		</div><!-- mypage div -->
 		
 		<div id="mypage_table_div">
 		<table id="mypage_table">
 			<tr>
-				<th>구매내역</th>
-				<th>회원정보</th>
-				<th>내 구매후기</th>
-				<th>내 문의내역</th>
+				<th><a href="ShopServlet?command=mypage_1&id=${sessionScope.loginUser.id}" class="a_tag2">구매내역</a></th>
+				<th><a href="ShopServlet?command=mypage_3&id=${sessionScope.loginUser.id}" class="a_tag2">회원정보</a></th>
+				<th><a href="ShopServlet?command=mypage_5&id=${sessionScope.loginUser.id}" class="a_tag2">내 구매후기</a></th>
+				<th><a href="ShopServlet?command=mypage_6&id=${sessionScope.loginUser.id}" class="a_tag2">내 문의내역</a></th>
 		</table>
 		</div>
 		
@@ -154,7 +162,7 @@ span{
 		</div>
 		
 		<div id="name">
-			<input id="input" type="text" placeholder="이름"><br>
+			<input id="input" type="text" value="${sessionScope.loginUser.id}"><br>
 			<br>
 		</div>
 		<div id="pw">

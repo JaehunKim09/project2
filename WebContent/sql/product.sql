@@ -1,31 +1,169 @@
-insert into product values(pNum_seq.nextval, 'LG전자 노트북 16인치', 1000000, 'https://file.mk.co.kr/meet/neds/2022/02/image_readtop_2022_92915_16436841154931279.jpg',
-'가벼운 사무용, 휴대용 노트북', '자체적인 배터리와 화면 출력장치, 마우스와 키보드가 있어 공책처럼 접히는 형태의 휴대용 컴퓨터를 이르는 용어. 그 중에서도 PC[1]나 Mac과 같은 개인용 컴퓨터와 Microsoft Windows, Linux, macOS 등 소프트웨어적으로 호환성이 있는 휴대용 컴퓨터를 말한다. 크기와 목적에 따라 여러 가지 하위 분류로 나뉘며, 휴대성에는 별 신경을 쓰지 않아 태생상 그럴 필요도 없는 크고 무거운 데스크톱 컴퓨터와는 달리, 노트북은 부피와 무게를 비롯한 휴대성을 제일 중시하기에 상대적으로 작고 가볍다는 점이 특징.'
-, 'elec2'); --상품번호, 이름, 가격, 이미지주소, 간략설명, 상세설명, 카테고리명
-
-insert into product values(pNum_seq.nextval, '드럼 세탁기', 600000, 'https://m.rentalplanner.kr/web/product/big/20200218/540af28491683e4d29552053c06a9166.jpg',
-'빨래 겁나잘되는 세탁기', '최초의 세탁기는 크랭크(손)로 돌려야 했고, 지금도 손으로 돌리거나 발판을 발로 밟아 돌리는 노가다로 작동하는 세탁기가 친환경이나 적정기술 사례로 드문드문 있다. 19세기 중반에는 산업혁명의 영향으로 증기 기관을 이용한 세탁기가 등장해 빨래를 하기 위해 힘들게 크랭크를 돌려야 할 필요가 없어졌지만 엄청난 증기 배출과 진동에 의한 울림, 소음 등이 겹쳐 민원이 속출하자 사장되었다. 이후 원시적인 형태의 세탁기가 다시 두루 사용되다, 1908년 아버 피셔가 전기로 돌아가는 세탁기를 발명했다.'
-, 'elec2');
-
-insert into product values(pNum_seq.nextval, 'LG전자 TV', 3000000, 'https://www.thelec.kr/news/photo/202204/16580_14904_5151.jpg',
-'넓은 화면으로 집을 영화관처럼 만들어주는 TV', '셀레늄의 광전효과, 즉 빛을 받으면 전기가 흐르는 효과를 아일랜드 전신기사 조지프 메이가 발견하면서 시작되었다고 볼 수 있다. 이후 이 원리를 이용하여 빛을 셀리늄판에 투과시켜 전자신호로 바꾸고 역으로 과정을 거쳐서 빛을 발산하여 화면을 보이게 하는 기술을 알렉산더 베인이 개발하였다. 그러나 이것은 기계식으로만 동작했기 때문에 단일사진만 보낼 수 있었다.'
-, 'elec2');
-
-insert into product values(pNum_seq.nextval, 'xx전자 선풍기', 159000, 'https://t1.daumcdn.net/cfile/tistory/9999A43B5F092C592F',
-'요즘 SNS에서 난리난 선풍기', '선풍기는 영어로 부채와 같은 Fan이다. 선풍기[1]라는 단어는 일본어에서 유래되었는데, 한국에 선풍기가 처음 들어온 경로가 일본을 통해서였기 때문이다.
-중국어로는 두 글자의 순서를 바꿔 风扇[fēngshàn]이라고 하며, 전자기기라는 점을 착안하여 电(電, 번개 전)을 붙여 电风扇[diànfēngshàn] 혹은 电扇[diànshàn]이라고도 한다.'
-,'elec2');
-
-insert into product values(pNum_seq.nextval, '노트북 20인치', 5000000, 'https://file.mk.co.kr/meet/neds/2022/02/image_readtop_2022_92915_16436841154931279.jpg',
-'가벼운 사무용, 휴대용 노트북', '노트북에 관한 상세설명 입니다.', 'elec2');
-
-insert into product values(pNum_seq.nextval, '노트북 20인치', 6000000, 'https://file.mk.co.kr/meet/neds/2022/02/image_readtop_2022_92915_16436841154931279.jpg',
-'가벼운 사무용, 휴대용 노트북', '노트북에 관한 상세설명 입니다.', 'elec2');
-
-insert into product values(pNum_seq.nextval, '노트북 20인치', 7000000, 'https://file.mk.co.kr/meet/neds/2022/02/image_readtop_2022_92915_16436841154931279.jpg',
-'가벼운 사무용, 휴대용 노트북', '노트북에 관한 상세설명 입니다.', 'elec2');
-
-insert into product values(pNum_seq.nextval, '노트북 20인치', 8000000, 'https://file.mk.co.kr/meet/neds/2022/02/image_readtop_2022_92915_16436841154931279.jpg',
-'가벼운 사무용, 휴대용 노트북', '노트북에 관한 상세설명 입니다.', 'elec2');
+delete from product;
 
 select * from product;
-delete from product where pName='LG전자 TV';
+
+insert into product values(pNum_seq.nextval, '블루종', 80000, 'https://image.msscdn.net/images/goods_img/20201117/1692628/1692628_5_125.jpg',
+'블루종', '블루종입니덩', 'outer1'); --상품번호, 이름, 가격, 이미지주소, 간략설명, 상세설명, 카테고리명
+
+insert into product values(pNum_seq.nextval, '레더재킷', 100000, 'https://image.msscdn.net/images/goods_img/20211231/2287605/2287605_1_125.jpg',
+'레더재킷', '소가 음무우우우우우우', 'outer1');
+
+insert into product values(pNum_seq.nextval, '가디건', 65000, 'https://image.msscdn.net/images/goods_img/20220105/2293208/2293208_2_125.jpg',
+'가디언루', '가디언토벌', 'outer1');
+
+insert into product values(pNum_seq.nextval, '후드집업', 70000, 'https://image.msscdn.net/images/goods_img/20210817/2066200/2066200_4_125.jpg',
+'후드집업', '아우 따수워 따수워집업', 'outer1');
+
+insert into product values(pNum_seq.nextval, '무스탕', 120000, 'https://image.msscdn.net/images/goods_img/20200901/1576767/1576767_2_125.jpg',
+'무스탕', '스타', 'outer1');
+
+insert into product values(pNum_seq.nextval, '블레이저 재킷', 105000, 'https://image.msscdn.net/images/goods_img/20220711/2657854/2657854_3_125.jpg',
+'블레이저', '재킷재킷', 'outer1');
+
+insert into product values(pNum_seq.nextval, '플리스', 85000, 'https://image.msscdn.net/images/goods_img/20190906/1145380/1145380_2_125.jpg',
+'플리스', '플리즈', 'outer1');
+
+insert into product values(pNum_seq.nextval, '아노락', 90000, 'https://image.msscdn.net/images/goods_img/20200414/1404195/1404195_1_125.jpg
+ ', '아노락', '아노 와타시', 'outer1');
+
+select * from product;
+delete from product;
+
+insert into product values(pNum_seq.nextval, '얄레 티샤스', 45000, ' https://image.msscdn.net/images/goods_img/20210312/1841764/1841764_3_125.jpg',
+'Yale, 반팔티샤스', '예븐 얄레 티샤스 레쓰고.', 'top2'); --상품번호, 이름, 가격, 이미지주소, 간략설명, 상세설명, 카테고리명
+
+insert into product values(pNum_seq.nextval, '타다 티샤스', 20000, 'https://image.msscdn.net/images/goods_img/20191001/1173551/1173551_1_125.jpg',
+'이상한염색', '이상한 염색을 한 이상한 티 샤 스.'
+, 'top2');
+
+insert into product values(pNum_seq.nextval, '맨후맨', 50000, 'https://image.msscdn.net/images/goods_img/20180823/836498/836498_2_125.jpg',
+'맨투맨', '따수운 맨후맨 .'
+, 'top2');
+
+insert into product values(pNum_seq.nextval, '후드티', 65000, 'https://image.msscdn.net/images/goods_img/20200928/1628385/1628385_5_125.jpg',
+'후드티', '아주 따숩다 따수워 후우쌍.'
+,'top2');
+
+insert into product values(pNum_seq.nextval, '니트', 50000, 'https://image.msscdn.net/images/goods_img/20201202/1710363/1710363_1_125.jpg',
+'맛있는 꽈니트', '설탕좀 많이 뿌려주세요.', 'top2');
+
+insert into product values(pNum_seq.nextval, '카라티', 25000, 'https://image.msscdn.net/images/goods_img/20220408/2477673/2477673_2_125.jpg',
+'카라티', '카리나도 입는 카라티', 'top2');
+
+insert into product values(pNum_seq.nextval, '반팔 셔츠', 15000, 'https://image.msscdn.net/images/goods_img/20210503/1935180/1935180_1_125.jpg',
+'편한 반팔 셔츠', '너무편해 빤스만 입은 너낌', 'top2');
+
+insert into product values(pNum_seq.nextval, '긴팔 셔츠', 30000, 'https://image.msscdn.net/images/goods_img/20190812/1116117/1116117_4_125.jpg',
+'가벼운 긴팔, 오우펴네', '빤스위에 하나만 입은너낌.', 'top2');
+
+select * from product;
+delete from product;
+
+
+insert into product values(pNum_seq.nextval, '데님 팬츠', 55000, 'https://image.msscdn.net/images/goods_img/20160818/396185/396185_3_125.jpg',
+'데님 팬츠', '우헤헤', 'pants3');
+
+insert into product values(pNum_seq.nextval, '데님 팬츠', 55000, 'https://image.msscdn.net/images/goods_img/20181025/890594/890594_2_125.jpg',
+'데님 팬츠', '오헤헤', 'pants3');
+
+insert into product values(pNum_seq.nextval, '린넨 팬츠', 40000, 'https://image.msscdn.net/images/goods_img/20210430/1931720/1931720_3_125.jpg',
+'린넨 팬츠', '린나이~', 'pants3');
+
+insert into product values(pNum_seq.nextval, '슬랙스', 35000, 'https://image.msscdn.net/images/goods_img/20220314/2417216/2417216_2_125.jpg',
+'슬랙스', '수플렉스', 'pants3');
+
+insert into product values(pNum_seq.nextval, '조거 팬츠', 55000, 'https://image.msscdn.net/images/goods_img/20211230/2287455/2287455_1_125.jpg',
+'조거 팬츠', '조커', 'pants3');
+
+insert into product values(pNum_seq.nextval, '조거 팬츠', 55000, 'https://image.msscdn.net/images/goods_img/20200903/1582583/1582583_1_125.jpg',
+'조거 팬츠', '통이조옵다아', 'pants3');
+
+insert into product values(pNum_seq.nextval, '숏팬츠', 25000, 'https://image.msscdn.net/images/goods_img/20200417/1409900/1409900_4_125.jpg',
+'숏팬츠', '너무 짧다', 'pants3');
+
+insert into product values(pNum_seq.nextval, '와이드팬츠', 30000, 'https://image.msscdn.net/images/goods_img/20220704/2646339/2646339_1_125.jpg',
+'와이드팬츠', '너무 넓다', 'pants3');
+
+select * from product;
+delete from product;
+
+insert into product values(pNum_seq.nextval, '나이키 반팔', 30000, 'https://image.msscdn.net/images/prd_img/20200217/1308001/detail_1308001_1_500.jpg',
+'나이키', '기능성 반팔', 'training4');
+
+insert into product values(pNum_seq.nextval, '언더아머 반팔', 35000, 'https://image.msscdn.net/images/goods_img/20210311/1838937/1838937_1_500.jpg?t=20210311104847',
+'언더아머', '500이하 처형', 'training4');
+
+insert into product values(pNum_seq.nextval, '기능성 반팔', 20000, 'https://image.msscdn.net/images/goods_img/20210714/2028864/2028864_1_500.jpg',
+'기능성 반팔', '아우 시원해에이이잉', 'training4');
+
+insert into product values(pNum_seq.nextval, '스파이더 긴팔', 50000, 'https://image.msscdn.net/images/goods_img/20220629/2638696/2638696_1_500.jpg?t=20220629151802',
+'스파이더', '피럴 파커', 'training4');
+
+insert into product values(pNum_seq.nextval, '나이키 반바지', 25000, 'https://image.msscdn.net/images/goods_img/20200217/1308010/1308010_1_500.jpg?t=20200217154307',
+'나이키', '기능성 반바지', 'training4');
+
+insert into product values(pNum_seq.nextval, '챔피언 반바지', 30000, 'https://image.msscdn.net/images/goods_img/20220401/2461246/2461246_21_500.jpg?t=20220711192453',
+'챔피언', '소리 지르는 니가', 'training4');
+
+insert into product values(pNum_seq.nextval, '데상트 바지', 30000, 'https://image.msscdn.net/images/goods_img/20220707/2652347/2652347_1_500.jpg?t=20220707162319',
+'데상트', '트레이닝 바지', 'training4');
+
+insert into product values(pNum_seq.nextval, '에프씨엠엠 바지', 30000, 'https://image.msscdn.net/images/goods_img/20211101/2209689/2209689_1_500.jpg?t=20220628164936',
+'에프씨엠엠', '트레이닝 바지', 'training4');
+
+select * from product;
+delete from product;
+
+insert into product values(pNum_seq.nextval, '쪼리', 30000, 'https://image.msscdn.net/images/goods_img/20210428/1926895/1926895_2_500.jpg?t=20220510163120',
+'플립플랍', '플립플랍 쪼리', 'shoes5');
+
+insert into product values(pNum_seq.nextval, '샌들', 40000, 'https://image.msscdn.net/images/goods_img/20160322/324275/324275_3_500.jpg?t=20220315144726',
+'버켄스탁', '로마군', 'shoes5');
+
+insert into product values(pNum_seq.nextval, '크록스', 35000, 'https://image.msscdn.net/images/prd_img/20220207/2344287/detail_2344287_3_500.jpg',
+'크록스', '깨굴깨굴 편하다', 'shoes5');
+
+insert into product values(pNum_seq.nextval, '운동화', 70000, 'https://image.msscdn.net/images/prd_img/20220218/2371338/detail_2371338_1_500.jpg',
+'나이키', '나이키 와플맨', 'shoes5');
+
+insert into product values(pNum_seq.nextval, '워커', 210000, 'https://image.msscdn.net/images/prd_img/20220408/2477687/detail_2477687_1_500.jpg',
+'닥터마틴', '불광시급', 'shoes5');
+
+insert into product values(pNum_seq.nextval, '유사구두', 120000, 'https://image.msscdn.net/images/goods_img/20190826/1128656/1128656_1_500.jpg',
+'커스텀에이드', '발냄새 주의', 'shoes5');
+
+insert into product values(pNum_seq.nextval, '레인부츠', 75000, 'https://image.msscdn.net/images/goods_img/20220707/2650876/2650876_1_500.jpg?t=20220707090534',
+'헌터', '수산시장 커버 가능', 'shoes5');
+
+insert into product values(pNum_seq.nextval, '슬리퍼', 30000, 'https://image.msscdn.net/images/goods_img/20220510/2547874/2547874_4_500.jpg?t=20220510114338',
+'코닥', '슬리퍼', 'shoes5');
+
+select * from product;
+delete from product;
+
+
+
+insert into product values(pNum_seq.nextval, '안경', 30000, 'https://image.msscdn.net/images/goods_img/20191004/1176399/1176399_1_500.jpg?t=20191004120620',
+'앤경', 'fㅐ션앤경', 'acc6'); --상품번호, 이름, 가격, 이미지주소, 간략설명, 상세설명, 카테고리명
+
+insert into product values(pNum_seq.nextval, '선글라스', 100000, 'https://image.msscdn.net/images/goods_img/20220126/2330146/2330146_2_500.jpg?t=20220213195344',
+'썬구리', '홍머병친구에게 선물하기', 'acc6');
+
+insert into product values(pNum_seq.nextval, '열쇠고리', 10000, 'https://image.msscdn.net/images/goods_img/20201023/1661684/1661684_1_500.jpg?t=20220628155109',
+'녹슬지 않는 열쇠고뤼', '바지에 걸고 다니면 나도 멋쟁이', 'acc6');
+
+insert into product values(pNum_seq.nextval, '열쇠고리', 15000, 'https://image.msscdn.net/images/goods_img/20210401/1875010/1875010_1_500.jpg?t=20210401143848',
+'꼴받는 열쇠고뤼', '몰 꼬라봐', 'acc6');
+
+insert into product values(pNum_seq.nextval, '카시오 손목시계', 230000, 'https://image.msscdn.net/images/goods_img/20210405/1880626/1880626_1_500.jpg?t=20220714103539',
+'카시오렌지', '깔라만시오', 'acc6');
+
+insert into product values(pNum_seq.nextval, '오메가 손목시계', 300000, 'https://image.msscdn.net/images/goods_img/20220609/2605366/2605366_100_500.jpg?t=20220715161948',
+'오메가 사피엔', '오메가3', 'acc6');
+
+insert into product values(pNum_seq.nextval, '반지', 120000, 'https://image.msscdn.net/images/goods_img/20220711/2657001/2657001_1_500.jpg?t=20220711145919',
+'호신용 반지', '까운팅 스떨~ 밤하늘의 퍼얼~', 'acc6');
+
+insert into product values(pNum_seq.nextval, '목걸이', 80000, 'https://image.msscdn.net/images/goods_img/20220707/2651250/2651250_1_500.png?t=20220707105705 ', 
+'러브 드림 홉 트러스트', '마트료시카 귀여웡', 'acc6');
+

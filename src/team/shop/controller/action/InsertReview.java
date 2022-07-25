@@ -1,31 +1,35 @@
 package team.shop.controller.action;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import team.shop.DAO.mypage1DAO;
-import team.shop.DTO.mypage1VO;
+import team.shop.DAO.reviewDAO;
+import team.shop.DTO.reviewVO;
 
-public class MyPage1Action implements Action {
+public class InsertReview implements Action {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String url = "/member/mypage_1_purchaseList.jsp";
+		String url = "/member/writeReview_Success.jsp";
 		
 		String id = request.getParameter("id");
-		//select로 내 주문내역 찾아와야 함(product_order table)
+		int pNum = Integer.parseInt(request.getParameter("pNum"));
+		String content = request.getParameter("content");
 		
-		mypage1DAO mDao = mypage1DAO.getInstance();
-		List<mypage1VO> list = mDao.selectMyProducts(id);
+		reviewVO rVo = new reviewVO();
 		
-		request.setAttribute("mylist", list);
+		rVo.setId(id);
+		rVo.setpNum(pNum);
+		rVo.setContent(content);
+		
+		reviewDAO rDao = reviewDAO.getInstance();
+		rDao.insertReview(rVo);
 		
 		request.getRequestDispatcher(url).forward(request, response);
-
+		
 	}
 
 }

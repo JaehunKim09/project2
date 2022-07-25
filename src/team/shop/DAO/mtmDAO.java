@@ -153,5 +153,108 @@ public class mtmDAO {
 		return mtmVo;
 	}//mtmUpdate끝
 	
-
+	public void mtmDelete(String mNum) {
+		String sql="delete from mtm where mNum=?";
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		
+		try {
+			conn = DBManager.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, mNum);
+			
+			pstmt.executeUpdate();
+					
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			DBManager.close(conn, pstmt);
+		}
+		
+	}//mtmDelete끝
+	
+	/*
+	 * public static mtmVO mtmReply(String admin_id, String content) {
+	 * 
+	 * String sql = "insert into mtm(mNum,admin_id,content) values(mNum_seq.nextVal,?,?)";
+	 * 
+	 * Connection conn=null; PreparedStatement pstmt = null;
+	 * 
+	 * 
+	 * 
+	 * mtmVO mtmVO = null;
+	 * 
+	 * try { conn = DBManager.getConnection(); pstmt = conn.prepareStatement(sql);
+	 * 
+	 * pstmt.setString(1, admin_id);
+	 * 
+	 * pstmt.setString(2, content);
+	 * 
+	 * pstmt.executeUpdate();
+	 * 
+	 * }catch (Exception e) { e.printStackTrace(); }finally { DBManager.close(conn,
+	 * pstmt); } return mtmVO;
+	 * 
+	 * 
+	 * }
+	 */
+	
+	/*
+	 * public static mtmVO mtmReply(mtmVO mtmVo) { String sql =
+	 * "update mtm set reply=? where mNum=?";
+	 * 
+	 * Connection conn = null; PreparedStatement pstmt = null;
+	 * 
+	 * 
+	 * try {
+	 * 
+	 * conn = DBManager.getConnection(); pstmt = conn.prepareStatement(sql);
+	 * 
+	 * pstmt.setString(1, mtmVo.getReply()); pstmt.setInt(2, mtmVo.getmNum());
+	 * 
+	 * pstmt.executeUpdate();
+	 * 
+	 * }catch (Exception e) { e.printStackTrace(); }finally { DBManager.close(conn,
+	 * pstmt); } return mtmVo; }//mtmUpdate끝
+	 */	
+	
+	public ArrayList<mtmVO> mtmList() {
+		String sql="select * from mtm";
+		
+		ArrayList<mtmVO> mtmVo = new ArrayList<mtmVO>();
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			
+			conn = DBManager.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			//pstmt.setString(1, id);
+			
+			while(rs.next()) {
+				mtmVO mVo = new mtmVO();
+				
+				mVo.setmNum(Integer.parseInt(rs.getString("mNum")));
+				mVo.setId(rs.getString("id"));
+				mVo.setTitle(rs.getString("title"));
+				mVo.setContent(rs.getString("content"));
+				mVo.setmDate(rs.getTimestamp("mDate"));
+				mVo.setmKind(rs.getString("mKind"));
+				mVo.setReply(rs.getString("reply"));
+				
+				mtmVo.add(mVo);
+			}
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			DBManager.close(conn, pstmt, rs);
+		}
+		return mtmVo;
+	}//mtmList끝
+	
 }

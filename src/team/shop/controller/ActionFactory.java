@@ -1,9 +1,15 @@
 package team.shop.controller;
 
-import team.shop.controller.action.Action; 
+import team.shop.controller.action.Action;
+import team.shop.controller.action.AdminMtmListAction;
+import team.shop.controller.action.CartDelete;
+import team.shop.controller.action.CartInsert;
+import team.shop.controller.action.CartList;
+import team.shop.controller.action.CartPayment;
 import team.shop.controller.action.CategoryDetailAction;
 import team.shop.controller.action.IndexAction;
 import team.shop.controller.action.InsertOrder;
+import team.shop.controller.action.InsertReview;
 import team.shop.controller.action.JoinAction;
 import team.shop.controller.action.JoinFormAction;
 import team.shop.controller.action.LoginAction;
@@ -14,7 +20,10 @@ import team.shop.controller.action.MyPage3Action;
 import team.shop.controller.action.MyPage5Action;
 import team.shop.controller.action.ProductDetailAction;
 import team.shop.controller.action.ReviewAction;
+import team.shop.controller.action.SearchAction;
+import team.shop.controller.action.WriteReviewFormAction;
 import team.shop.controller.action.askAction;
+import team.shop.controller.action.mtmDeleteAction;
 import team.shop.controller.action.mtmUpdate;
 import team.shop.controller.action.mtmUpdateForm;
 import team.shop.controller.action.MyPage7Action;
@@ -78,6 +87,24 @@ public class ActionFactory {
 			action = new mtmUpdate();
 		}else if(command.equals("mtmUpdateForm")) {
 			action = new mtmUpdateForm();
+		}else if(command.equals("mtmDelete")) {
+			action = new mtmDeleteAction();
+		}else if(command.equals("adminMtmList")) {
+			action = new AdminMtmListAction();
+		}else if(command.equals("mypage_2")) {
+			action = new WriteReviewFormAction();
+		}else if(command.equals("insert_review")) {
+			action = new InsertReview();
+		}else if(command.equals("cart_insert")) {
+			action = new CartInsert();
+		}else if(command.equals("cart_list")) {
+			action = new CartList();
+		}else if(command.equals("cart_delete")) {
+			action = new CartDelete();
+		}else if(command.equals("cart_payment")) {
+			action = new CartPayment();
+		}else if(command.equals("search")) {
+			action = new SearchAction();
 		}
 		
 	

@@ -32,7 +32,9 @@ font-weight:bold;
 #small {
 	padding-bottom: 200px; /* footer의 높이 */
 }
-
+#mypage_table{
+border-collapse:collapse;
+}
 #mypage_table_div {
 	margin-top:83px;
 	margin-left: 597px;
@@ -41,9 +43,8 @@ font-weight:bold;
 	width: 330px;
 }
 
-#mypage_table th:hover {
-	background: black;
-	color: white;
+#mypage_table th:hover{
+color:red;
 }
 
 #mypage_table th {
@@ -65,6 +66,14 @@ font-weight:bold;
 	margin: auto;
 	display: block;
 }
+.a_tag2{
+text-decoration:none;
+color:black;
+}
+.a_tag2:hover{
+background:black;
+color:white;
+}
 </style>
 </head>
 <body>
@@ -73,17 +82,20 @@ font-weight:bold;
 			<div id="header">
 				<jsp:include page="../include/header_notlogin.jsp"></jsp:include>
 			</div>
+
 		<div id="mypage_div">
 		<br><span id="mypage_span">마이페이지
-		</span>&nbsp;&nbsp;&nbsp; 홍길동 회원님을 위한 마이페이지 입니다.
+		</span>&nbsp;&nbsp;&nbsp; 
+		<b>${sessionScope.loginUser.id}(${sessionScope.loginUser.name})</b>회원님을 위한 마이페이지 입니다.
 		</div><!-- mypage div -->
 			<div id="mypage_table_div">
 				<table id="mypage_table">
 					<tr>
-						<th><a href="ShopServlet?command=mypage_1&id=${sessionScope.loginUser.id}">구매내역</a></th>
-						<th>회원정보</th>
-						<th>내 구매후기</th>
-						<th><a href="ShopServlet?command=mypage_6&id=${sessionScope.loginUser.id}">내 문의내역</a></th>
+						<th><a href="ShopServlet?command=mypage_1&id=${sessionScope.loginUser.id}" class="a_tag2">구매내역</a></th>
+						<th><a href="ShopServlet?command=mypage_3&id=${sessionScope.loginUser.id}" class="a_tag2">회원정보</a></th>
+						<th><a href="ShopServlet?command=mypage_5&id=${sessionScope.loginUser.id}" class="a_tag2">내 구매후기</a></th>
+						<th><a href="ShopServlet?command=mypage_6&id=${sessionScope.loginUser.id}" class="a_tag2">내 문의내역</a></th>
+					</tr>
 				</table>
 			</div>
 			<br>

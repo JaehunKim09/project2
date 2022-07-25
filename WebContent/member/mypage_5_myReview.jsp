@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="EUC-KR"%>
-	<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,8 +24,9 @@ html, body {
 }
 
 #product_Info {
-	padding-top: 50px;
-	margin-left: 28%;
+	padding:0;
+	margin-left: 31%;
+	width:930px;
 }
 
 #mypage_span {
@@ -41,7 +43,7 @@ text-align:left;
 }
 #mypage_table{
 position:absolute;
-top:100px;
+top:80px;
 border-collapse:collapse;
 border:1px solid gray;
 color:gray;
@@ -50,7 +52,11 @@ margin-top:10px;
 #mypage_table th{
 border:1px solid gray;
 }
+#mypage_table th:hover{
+color:red;
+}
 #product_info_table{
+border-bottom:1px solid black;
 width:900px;
 height:130px;
 left:600px;
@@ -59,6 +65,19 @@ left:600px;
 height:200px;
 text-align:center;
 }
+.img_myreview{
+width:150px;
+height:150px;
+margin:0;
+}
+.a_tag2{
+text-decoration:none;
+color:black;
+}
+.a_tag2:hover{
+background:black;
+color:white;
+}
 </style>
 </head>
 <body>
@@ -66,59 +85,46 @@ text-align:center;
 		<div id="small">
 			<div id="header">
 				<jsp:include page="../include/header_notlogin.jsp"></jsp:include>
-			</div>
-			<!-- header -->
-			<hr size="2" style="color: lightgray">
+			</div><!-- header -->
+			
+		<hr size="2" style="color: lightgray">
 			<div id="mypage_div">
 				<br>
-				<span id="mypage_span">마이페이지 </span>&nbsp;&nbsp;&nbsp; 홍길동 회원님을 위한
-				마이페이지 입니다.
+				<span id="mypage_span">마이페이지 </span>&nbsp;&nbsp;&nbsp; 
+				<b>${sessionScope.loginUser.id}(${sessionScope.loginUser.name})</b>회원님을 위한 마이페이지 입니다.
 				<table id="mypage_table">
 					<tr>
-						<th><a href="ShopServlet?command=mypage_1&id=${sessionScope.loginUser.id}">구매내역</a></th>
-						<th>회원정보</th>
-						<th>내 구매후기</th>
-						<th><a href="ShopServlet?command=mypage_6&id=${sessionScope.loginUser.id}">내 문의내역</a></th>
+				<th><a href="ShopServlet?command=mypage_1&id=${sessionScope.loginUser.id}" class="a_tag2">구매내역</a></th>
+				<th><a href="ShopServlet?command=mypage_3&id=${sessionScope.loginUser.id}" class="a_tag2">회원정보</a></th>
+				<th><a href="ShopServlet?command=mypage_5&id=${sessionScope.loginUser.id}" class="a_tag2">내 구매후기</a></th>
+				<th><a href="ShopServlet?command=mypage_6&id=${sessionScope.loginUser.id}" class="a_tag2">내 문의내역</a></th>
 				</table>
 			</div>
 			<br><br><br><br><br><br>
 			<div id="product_Info">
-			<hr>
+		<hr>
 		<table id="product_info_table">
+		
 			<tr style="background:skyblue">
 				<th colspan="2">상품명</th>
-				<th>상품평</th>
-				<th>작성일</th>
+				<th style="width:400px">상품평</th>
+				<th style="width:150px">작성일</th>
 			</tr>
+		<c:forEach items="${rList}" var="review">
 			<tr>
-				<td><img src="#"></td>
-				<td>상품명</td>
-				<td>상품평</td>
-				<td>작성일</td>
+				<td><img src="${review.pImg}" class="img_myreview"></td>
+				<td>${review.pName}</td>
+				<td>${review.content}</td>
+				<td><fmt:formatDate value="${review.rDate}"></fmt:formatDate></td>
 			</tr>
-			<tr>
-				<td><img src="#"></td>
-				<td>상품명</td>
-				<td>상품평</td>
-				<td>작성일</td>
-			</tr>
-			<tr>
-				<td><img src="#"></td>
-				<td>상품명</td>
-				<td>상품평</td>
-				<td>작성일</td>
-			</tr>
+		</c:forEach>
 		</table>
-			</div>
-			
-				
+			</div>						
 		</div>
 		<!-- small -->
 		<div id="footer">
 			<jsp:include page="../include/footer.jsp"></jsp:include></div>
 	</div>
 	<!-- big -->
-
-
 </body>
 </html>

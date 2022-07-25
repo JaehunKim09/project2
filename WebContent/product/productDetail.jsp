@@ -1,10 +1,26 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script>
+function go_payment(pNum, pPrice){
+	var n = pNum;
+	var p = pPrice;
+	document.frm.submit();
+	document.frm.action="ShopServlet?command=payment&pNum="+n+"&pPrice="+p;
+	
+}
+function go_cart(pNum){
+	var n = pNum
+	document.frm.submit();
+	document.frm.action="ShopServlet?command=cart_insert&pNum="+n;
+}
+</script>
 <style>
 html,body{
 margin:0;
@@ -32,9 +48,11 @@ margin-right:50px;
 padding-top:20px;
 }
 #product_detail{
-display:inline-block;
+position:absolute;
 width:400px;
 height:300px;
+right:550px;
+top:220px;
 }
 #product_name{
 font-weight:bold;
@@ -76,47 +94,58 @@ text-align:center;
 color:red;
 font-weight:bold;
 }
+.go_review{
+font-size:14px;
+border:1px solid black;
+}
 </style>
 </head>
 <body>
-<div id="big">
 
+<div id="big">
 <jsp:include page="../include/header_notlogin.jsp"></jsp:include>
 <div id="small">
+<form name="frm" method="post">
+	
 	<div class="product_img div_img">
 		<img class="product_img" src="${product.pImg}"><br>
 		<div id="product_option">
 			[옵션선택]<br>
-	수량
+	수량 	<input type="number" name="cnt" value="1" style="text-align:center; width:50px;"/>
 	<hr>
 	<table>
 		<tr>
-			<td style="border:1px solid black" width="15" align="center">-</td>
-			<td style="border:1px solid black">1(수량)</td>
-			<td style="border:1px solid black" width="15" align="center">+</td>
-		</tr>
-	</table>	
-		
-	<table>
-		<tr>
-			<td width="150">결제 금액</td>
-			<td width="230" align="right"><span id="price_font">${product.pPrice}</span></td>
+			<td width="150">상품 가격</td>
+			<td width="230" align="right"><span id="price_font"><fmt:formatNumber value="${product.pPrice}" type="currency"/></span></td>
 		</tr>
 	</table>
 	</div>
-	<br><br>
+	</form>
+	<br>
 		<div align="right">
-		<input id="purchase_button" type="submit" value="구매하기">
+	<c:choose>
+			<c:when test="${empty sessionScope.loginUser}">
+				<input id="purchase_button" type="button" value="구매하기" onclick="location='ShopServlet?command=login_form'">
+				<input id="purchase_button" type="button" value="장바구니 담기" onclick="location='ShopServlet?command=login_form'">
+			</c:when>
+	<c:otherwise>
+			<input id="purchase_button" type="submit" value="구매하기"
+			onclick="go_payment(${product.pNum},${product.pPrice})">
+			<input id="purchase_button" type="submit" value="장바구니 담기"
+			onclick="go_cart(${product.pNum})">
+	</c:otherwise>
+	</c:choose>
 		</div>
 	</div>
 	<div id="product_detail">
-	<span id="product_name">${product.pName}</span>
+	<span id="product_name">${product.pName}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	<span class="go_review"><a href="ShopServlet?command=review&pNum=${product.pNum}" class="a_tag">구매후기 보러가기</a></span>
 	<hr size="2" color="gray">
-	가격 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span style="font-weight:bold">${product.pPrice}</span>
+	가격 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span style="font-weight:bold"><fmt:formatNumber value="${product.pPrice}" type="number"/></span>
 	<hr style="border:1px dotted lightgray">
 	<p>
 	<b>배송 안내</b><br>
-	배송비 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span style="font-weight:bold">무료배송</span><br>
+	배송비 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span style="font-weight:bold">3,000원</span><br>
 	배송기간  &nbsp;&nbsp; 평균 입금완료일 기준 2~4영업일이 소요됩니다<br>
 	배송지역  &nbsp;&nbsp; 전국 (일부지역 제외)
 	</p>
@@ -135,7 +164,6 @@ font-weight:bold;
 		<li>제품을 세탁하거나 수선하는 등 타업체에서 선 처리한경우
 	</ul>
 	</p>
-	
 	</div>
 	<br><br><br><br><br>
 	
@@ -144,6 +172,7 @@ font-weight:bold;
 		${product.pDetailInfo}
 	</article>
 </div><!-- small -->
+
 <div id="footer">
 <jsp:include page = "../include/footer.jsp"></jsp:include>
 </div>

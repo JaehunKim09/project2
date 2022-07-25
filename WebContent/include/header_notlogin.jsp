@@ -6,7 +6,13 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poor+Story&display=swap" rel="stylesheet">
 <style>
+*{
+	font-family: 'Poor Story', cursive;
+}
 #p_container_header{
 position:relative;
 width:1500px;
@@ -15,24 +21,16 @@ margin:0 auto;
 }
 #logo{
 position:absolute;
-border:1px solid red;
-weight:70px;
-height:50px;
+width:140px;
+height:140px;
 left:150px;
 top:30px;
 }
 #login{
 position:absolute;
-right:0;
+right:50px;
 top:0;
 font-size:15px;
-}
-.a_tag{
-text-decoration:none;
-color:black;
-}
-.a_tag:hover{
-color:red;
 }
 #input{
 font-size: 16px;
@@ -46,25 +44,25 @@ float:left;
 width:50px;
 height:28px;
 border:0px;
-background:#1b5ac2;
+background:gray;
 outline:none;
 float:right;
 color:#ffffff;
 }
 #search{
 position:absolute;
-border: 1px solid #1b5ac2;
+border: 1px solid lightgray;
 background:#ffffff;
 left:600px;
 top:40px;
 }
 .mypage{
 position:absolute;
-border:1px solid red;
+width:100px;
 height:50px;
 }
 .my{
-left:1200px;
+left:1250px;
 top:30px;
 }
 .jang{
@@ -85,50 +83,81 @@ width:800px;
 width:100px;
 height:50px;
 margin-right:20px;
+border:1px solid lightgray;
+
+}
+#category_table th{
+border:1px solid lightgray;
 }
 img{
 width:100%;
 height:100%;
 }
+}
+#circle{
+width:100%;
+height:100%;
+border-radius : 70%;
+}
+.a_tag3{
+text-decoration:none;
+color:black;
+}
+.a_tag3:hover{
+color:red;
+}
 </style>
 </head>
 <body>
+<form method="post" action="ShopServlet">
+<input type="hidden" name="command" value="search">
 <div id="p_container_header">
 	<div id="logo">
-		<a href="ShopServlet?command=index" class="a_tag"><img src="#">로고</a>
+		<a href="ShopServlet?command=index" class="a_tag"><img src="https://i.imgur.com/phkA0Qo.png"></a>
 	</div>
 	
 	<div id="login">
 	<c:choose>
 			<c:when test="${empty sessionScope.loginUser}">
-				<a href="ShopServlet?command=login_form" class="a_tag">로그인</a>
+				<a href="ShopServlet?command=login_form" class="a_tag a_tag3">로그인</a>
 
-				<a href="ShopServlet?command=join_form" class="a_tag">회원가입</a>
+				<a href="ShopServlet?command=join_form" class="a_tag a_tag3">&nbsp;&nbsp;&nbsp;&nbsp;회원가입</a>
 			</c:when>
 	<c:otherwise>
 			 	${sessionScope.loginUser.name}님(${sessionScope.loginUser.id})
-				<a href="ShopServlet?command=logout">로그아웃</a>
+				<a href="ShopServlet?command=logout" class="a_tag a_tag3">로그아웃</a>
 	</c:otherwise>
 	</c:choose>
 	</div>
 	
 	<div id="search">
-		<input id="input" type="text" placeholder="검색어 입력"><button id="input_but">검색</button>
+		<input id="input" type="search" placeholder="검색어 입력" name="search">
+		<button id="input_but" type="submit">검색</button>
 	</div>
 	
 	<div class="mypage my">
 	<c:choose>
 			<c:when test="${empty sessionScope.loginUser}">
-				<a href="ShopServlet?command=login_form" class="a_tag"><img src="#">마이페이지</a>
+				<a href="ShopServlet?command=login_form" class="a_tag a_tag3">
+				<img src="https://images.assetsdelivery.com/thumbnails/drvector/drvector1510/drvector151000230.jpg">&nbsp;&nbsp;마이페이지</a>
 			</c:when>
 	<c:otherwise>
-			<a href="ShopServlet?command=mypage_1" class="a_tag"><img src="#">마이페이지</a>
+				<a href="ShopServlet?command=mypage_1&id=${sessionScope.loginUser.id}" class="a_tag a_tag3">
+				<img src="https://images.assetsdelivery.com/thumbnails/drvector/drvector1510/drvector151000230.jpg">&nbsp;&nbsp;마이페이지</a>
 	</c:otherwise>
 	</c:choose>
-<!-- <img src="#">마이페이지Image -->
 	</div>
 	<div class="mypage jang">
-		<img src="#">고객센터Image
+	<c:choose>
+			<c:when test="${empty sessionScope.loginUser}">
+				<a href="ShopServlet?command=login_form" class="a_tag a_tag3">
+				<img src="https://images.assetsdelivery.com/thumbnails/pinkyrabbit/pinkyrabbit1810/pinkyrabbit181000049.jpg">&nbsp;&nbsp;장바구니</a>
+			</c:when>
+	<c:otherwise>
+				<a href="ShopServlet?command=cart_list&id=${sessionScope.loginUser.id}" class="a_tag a_tag3">
+				<img src="https://images.assetsdelivery.com/thumbnails/pinkyrabbit/pinkyrabbit1810/pinkyrabbit181000049.jpg">&nbsp;&nbsp;장바구니</a>
+	</c:otherwise>
+	</c:choose>
 	</div>
 	
 	<div id="category_container">
@@ -142,15 +171,16 @@ height:100%;
 				<td><a href="ShopServlet?command=category_list&categoryName=acc6" class="a_tag"><img src="https://image.msscdn.net/images/goods_img/20190511/1042191/1042191_1_500.jpg?t=20220628145624"></a></td>
 			</tr>
 			<tr>
-				<th><a href="ShopServlet?command=category_list&categoryName=outer1" class="a_tag">아우터</a></th>
-				<th><a href="ShopServlet?command=category_list&categoryName=top2" class="a_tag">상의</a></th>
-				<th><a href="ShopServlet?command=category_list&categoryName=pants3" class="a_tag">바지</a></th>
-				<th><a href="ShopServlet?command=category_list&categoryName=training4" class="a_tag">트레이닝</a></th>
-				<th><a href="ShopServlet?command=category_list&categoryName=shoes5" class="a_tag">신발</a></th>
-				<th><a href="ShopServlet?command=category_list&categoryName=acc6" class="a_tag">패션소품</a></th>
+				<th><a href="ShopServlet?command=category_list&categoryName=outer1" class="a_tag a_tag3">아우터</a></th>
+				<th><a href="ShopServlet?command=category_list&categoryName=top2" class="a_tag a_tag3">상의</a></th>
+				<th><a href="ShopServlet?command=category_list&categoryName=pants3" class="a_tag a_tag3">바지</a></th>
+				<th><a href="ShopServlet?command=category_list&categoryName=training4" class="a_tag a_tag3">트레이닝</a></th>
+				<th><a href="ShopServlet?command=category_list&categoryName=shoes5" class="a_tag a_tag3">신발</a></th>
+				<th><a href="ShopServlet?command=category_list&categoryName=acc6" class="a_tag a_tag3">패션소품</a></th>
 			</tr>
 		</table>
 	</div>
 </div>
+</form>
 </body>
 </html>

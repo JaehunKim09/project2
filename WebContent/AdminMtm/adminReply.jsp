@@ -68,7 +68,7 @@ border:1px solid gray;
 </style>
 </head>
 <body>
-<form name="formm" method="post">
+
 <%-- <input type="hidden" name="title" value="${mtmVO}"> --%>
 
 	<div id="big">
@@ -100,10 +100,8 @@ border:1px solid gray;
 		<hr style="width: 900px;">
 		<p>답변내용&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(데이터베이스)</p>
 			</div><!-- mypage_div -->
-			<%-- <c:if test="${sessionScope.adminid} "/> --%>
-		<input type="button" value="수정하기" id="but" onclick="location.href='ShopServlet?command=mtmUpdateForm&mNum=${mtm.mNum}'">
-		<input type="button" value="삭제하기" id="but" onclick="location.href='ShopServlet?command=mtmDelete&mNum=${mtm.mNum}'"> 
-			
+		<input type="button" value="답글달기" id="but" onclick="location.href='ShopServlet?command=mtmUpdateForm&mNum=${mtm.mNum}'">
+		
 	</div><!-- small -->
 		</div><!-- big -->
 	<div id="footer">
@@ -111,6 +109,6 @@ border:1px solid gray;
 	</div>
 
 	
-</form>
+
 </body>
 </html>

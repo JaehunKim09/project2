@@ -31,6 +31,7 @@ admin_name varchar2(10) not null,
 admin_pw   varchar2(20) not null
 );
 
+insert into admin values('admin','admin','1111');
 
 create table product(
 pNum        number       not null primary key, --PK
@@ -76,10 +77,20 @@ content varchar2(4000) not null,
 reply   varchar2(4000),
 mDate   TimeStamp      default sysdate not null
 );
+
+create table cart(
+cNum number not null primary key,
+id   varchar2(100),
+pNum number,
+cnt  number
+);
+
+
 select * from mtm;
 select * from mtm where id='cc';
 select * from mtm where mNum=3;
-update mtm set title='제목수정', content='내용수정'  where mNum=3;
+update mtm set reply='답글입니다' where mNum=43;
+delete from mtm where mNum=41;
 
 drop sequence pNum_seq;
 drop sequence oNum_seq;
@@ -110,3 +121,13 @@ where p.pNum = r.pNum and c.id = r.id;
 
 drop view mypage5_view;
 select * from mypage5_view;
+
+--View3
+create or replace view cart_view
+as
+select ct.cNum, ct.id, ct.pNum, ct.cnt, p.pImg, p.pName, p.pPrice
+from cart ct, client c, product p 
+where ct.id = c.id and ct.pNum = p.pNum;
+
+drop view cart_view;
+select * from cart_view;

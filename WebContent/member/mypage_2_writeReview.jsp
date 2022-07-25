@@ -1,10 +1,19 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="utf-8">
 <title>Insert title here</title>
+<script>
+function review_check(){
+	if(document.frm.content.value == 0){
+		alert("ë‚´ìš©ì„ ì…ë ¥í•˜ì„¸ìš”.");
+		return false;
+	}else
+		return true;
+}
+</script>
 <style>
 html, body {
 	margin: 0;
@@ -18,7 +27,7 @@ html, body {
 }
 
 #small {
-	padding-bottom: 200px; /* footerÀÇ ³ôÀÌ */
+	padding-bottom: 200px; /* footerì˜ ë†’ì´ */
 }
 #product_info_table td {
 	height: 200px;
@@ -27,8 +36,13 @@ html, body {
 }
 
 #product_Info {
+width:1010px;
 	padding-top: 50px;
-	margin-left: 13%;
+	margin : 0 auto;
+}
+.img{
+width:150px;
+height:150px;
 }
 </style> 
 </head>
@@ -41,37 +55,55 @@ html, body {
 			<!-- header -->
 			<hr size="2" style="color: lightgray">
 			<div id="product_Info">
-			±¸¸ÅÈÄ±â ÀÛ¼º
+			<b style="font-size:30px;">êµ¬ë§¤í›„ê¸° ì‘ì„±</b>
 			<hr size="2" style="color: black">
+	<!-- form -->
+	<form method="post" action="ShopServlet" name="frm">
+	<!-- hiddeníƒœê·¸ë¡œ íšŒì› id ë³´ë‚´ê¸° -->
+	<input type="hidden" name="command" value="insert_review">
+	<input type="hidden" name="id" value="${sessionScope.loginUser.id}">
+	<input type="hidden" name="pNum" value="${product.pNum}">
+			<table>
+				<tr>
+					<td><input type="text" name="pName" value="${product.pName}" readonly="readonly"
+							style="border:0; font-weight:bold;"></td>
+				</tr>
 				<tr>
 					<td>
-						<img src="#" height="100px" ; width="100";></td>
-					<td>»óÇ°¸í</td>
+						<img src="${product.pImg}" class="img img_buy" name="pImg"></td>
 				</tr>
+			</table>
 				<br>
 				<tr>
-					<td><input type="text"
-						placeholder="³»¿ëÀ» ÀÔ·ÂÇÏ¼¼¿ä.(ÃÖ¼Ò 10ÀÚ ÃÖ´ë 250ÀÚ)"
-						style="width: 1000px; height: 200px; font-size: 15px;"></td>
-				</tr>
-				<br>
-				<tr>
-				<td>»çÁø(¼±ÅÃ)</td>
-					<td>
-						<img src="#" height="100px" width="100"></td>
-					<td>
-						<img src="#" height="100px" width="100"></td>
-					<td>
-						<img src="#" height="100px" width="100"></td>
-					<td>
-						<img src="#" height="100px" width="100"></td>
-				
+					<td><textarea placeholder="ë‚´ìš©ì„ ì…ë ¥í•˜ì„¸ìš”.(ìµœì†Œ 10ì ìµœëŒ€ 250ì)" 
+					style="width: 610px; height:200px; font-size: 15px;
+					vertical-align:top;" name="content"></textarea> </td>
 				</tr>
 				<br><br>
+			<!-- <table>
+				<tr>
+					<td>* Upload &nbsp;</td>
+					<td><input type="button" value="ë¶ˆëŸ¬ì˜¤ê¸°"></td>
+				</tr>
+			</table>
+			<table>
+				<tr>
+					<td>
+						<img src="#" class="img img_take"></td>
+					<td>
+						<img src="#" class="img img_take"></td>
+					<td>
+						<img src="#" class="img img_take"></td>
+					<td>
+						<img src="#" class="img img_take"></td>
+				</tr>
+			</table>
+				<br><br> -->
 				<table text-align="center";>
-					<td><input type="submit" value="µî·Ï" class="button">
-						<input type="reset" value="Ãë¼Ò" class="button"></td>
+					<td><input type="submit" value="ë“±ë¡" class="button" onclick="return review_check()">
+						<input type="reset" value="ì·¨ì†Œ" class="button"></td>
 				</table>
+	</form>
 			</div>
 		</div><!-- small -->
 		<div id="footer">
