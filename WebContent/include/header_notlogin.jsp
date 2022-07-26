@@ -151,7 +151,7 @@ color:red;
 	<c:choose>
 			<c:when test="${empty sessionScope.loginUser}">
 				<a href="ShopServlet?command=login_form" class="a_tag a_tag3">
-				<img src="https://images.assetsdelivery.com/thumbnails/pinkyrabbit/pinkyrabbit1810/pinkyrabbit181000049.jpg">&nbsp;&nbsp;장바구니</a>
+				<img src="https://cdn-icons-png.flaticon.com/512/57/57563.png">&nbsp;&nbsp;장바구니</a>
 			</c:when>
 	<c:otherwise>
 				<a href="ShopServlet?command=cart_list&id=${sessionScope.loginUser.id}" class="a_tag a_tag3">

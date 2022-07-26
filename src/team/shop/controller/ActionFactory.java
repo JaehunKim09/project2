@@ -1,7 +1,7 @@
 package team.shop.controller;
 
 import team.shop.controller.action.Action;
-import team.shop.controller.action.AdminMtmListAction;
+
 import team.shop.controller.action.CartDelete;
 import team.shop.controller.action.CartInsert;
 import team.shop.controller.action.CartList;
@@ -30,6 +30,15 @@ import team.shop.controller.action.MyPage7Action;
 import team.shop.controller.action.MyPage6Action;
 import team.shop.controller.action.Payment;
 import team.shop.controller.action.mtmWriteAction;
+import team.shop.controller.admin.action.AdminCategoryList;
+import team.shop.controller.admin.action.AdminDeleteAction;
+import team.shop.controller.admin.action.AdminLoginAction;
+import team.shop.controller.admin.action.AdminMainAction;
+import team.shop.controller.admin.action.AdminMtmList;
+import team.shop.controller.admin.action.AdminMtmOneList;
+import team.shop.controller.admin.action.AdminMtmUpdateAction;
+import team.shop.controller.admin.action.AdminUpdateAction;
+import team.shop.controller.admin.action.AdminUpdateFormAction;
 
 public class ActionFactory {
 	//싱글톤 형태로 유일하게 한 개의 객체만 생성하고 getInstance()로 호출해 사용함
@@ -89,8 +98,6 @@ public class ActionFactory {
 			action = new mtmUpdateForm();
 		}else if(command.equals("mtmDelete")) {
 			action = new mtmDeleteAction();
-		}else if(command.equals("adminMtmList")) {
-			action = new AdminMtmListAction();
 		}else if(command.equals("mypage_2")) {
 			action = new WriteReviewFormAction();
 		}else if(command.equals("insert_review")) {
@@ -107,6 +114,27 @@ public class ActionFactory {
 			action = new SearchAction();
 		}
 		
+		//admin Action
+				else if(command.equals("admin_login")) {
+					action = new AdminLoginAction();
+				}else if(command.equals("admin_main")) {
+					action = new AdminMainAction();
+				}else if(command.equals("admin_product_UpdateForm")) {
+					action = new AdminUpdateFormAction();
+				}else if(command.equals("admin_productUpdate")) {
+					action = new AdminUpdateAction();
+				}else if(command.equals("admin_productDelete")) {
+					action = new AdminDeleteAction();
+				}else if(command.equals("admin_category_list")) {
+					action = new AdminCategoryList();
+				}else if(command.equals("admin_mtm_List")) {
+					action = new AdminMtmList();
+				}else if(command.equals("Admin_mtm_one_list")) {
+					action = new AdminMtmOneList();
+				}else if(command.equals("Admin_mtm_reply_update")) {
+					action = new AdminMtmUpdateAction();
+				}
+				
 	
 		return action;
 }

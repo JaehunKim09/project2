@@ -125,7 +125,7 @@ select {
 						
 					아이디&nbsp;&nbsp;&nbsp;${sessionScope.loginUser.id}<br><br>
 					
-					분류
+					
 					제목 <input type="text" size="50px" name="title" value="${mtm.title}"> <br>
 					<br> 
 					내용 <input type="text" size="50px" style="height: 100px;" name="content" value="${mtm.content}">

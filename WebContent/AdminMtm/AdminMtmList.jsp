@@ -18,13 +18,14 @@
 	<c:forEach items="${mtm}" var="mtmList">
 	<tr>
 		<td>${mtmList.id}</td>
-		<td>${mtmList.title}</td>
+		<td><a href="ShopServlet?command=Admin_mtm_one_list&mNum=${mtmList.mNum}">${mtmList.title}</a></td>
 		<td>${mtmList.content}</td>
 		<td>${mtmList.reply}</td>
-		<td>${mtmList.mDate }</td>
+		<td>${mtmList.mDate}</td>
 	</tr>
 	
 </c:forEach>
+<%-- <a href="ShopServlet?command=mypage_7&mNum=${mtmVo.mNum}">${mtmVo.title}</a> --%>
 </table>
 </form>
 </body>

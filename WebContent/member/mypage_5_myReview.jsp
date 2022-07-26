@@ -83,7 +83,7 @@ color:white;
 <body>
 	<div id="big">
 		<div id="small">
-			<div id="header">
+			<div id="header"> 
 				<jsp:include page="../include/header_notlogin.jsp"></jsp:include>
 			</div><!-- header -->
 			

@@ -99,7 +99,7 @@ height:50px;
 			<span id="span">문의내역&nbsp;&nbsp;&nbsp; </span>
 				<input type='button' class='btn' name='btn' value='자주하는질문' onclick="location.href='ShopServlet?command='"> 
 				<input type='button' class='btn' name='btn' value='1:1문의하기' onclick="location.href='ShopServlet?command=ask'">
-				<input type="button" class="btn" name='btn' value="관리자" onclick="location.href='ShopServlet?command=adminMtmList&id=${sessionScope.mtm.loginUser}'">
+				
 			<br><br>
 			
 			<table id="question_table1">

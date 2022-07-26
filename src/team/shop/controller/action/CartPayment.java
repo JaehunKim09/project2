@@ -45,7 +45,7 @@ public class CartPayment implements Action {
 		oVo.setpNum(cartVO.getpNum());
 		oVo.setId(cartVO.getId());
 		oVo.setoPrice(cartVO.getpPrice() * cartVO.getCnt());
-		oVo.setCnt(cartVO.getCnt());
+		oVo.setcnt(cartVO.getCnt());
 		//고정 배송지 정보 3개
 		oVo.setoName(request.getParameter("rec_name"));
 		oVo.setoAddress(oAddress);

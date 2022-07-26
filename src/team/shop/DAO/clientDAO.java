@@ -81,4 +81,31 @@ public class clientDAO {
 			
 		}
 		
+		public void updateClient(String id, clientVO cVo2) {
+
+			String sql = "update client set pw=?, email=?, address=?, phone=? where id=?";
+
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+
+			try {
+				conn = DBManager.getConnection();
+				pstmt = conn.prepareStatement(sql);
+
+				pstmt.setString(1, cVo2.getPw());
+				pstmt.setString(2, cVo2.getEmail());
+				pstmt.setString(3, cVo2.getAddress());
+				pstmt.setString(4, cVo2.getPhone());
+				pstmt.setString(5, id);
+
+				pstmt.executeUpdate();// 쿼리문 실행
+
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				DBManager.close(conn, pstmt);
+			}
+
+		}
+		
 }

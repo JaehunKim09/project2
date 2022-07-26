@@ -1,10 +1,20 @@
---Table ����
+--Drop Table
 drop table client;
 drop table admin;
 drop table product;
 drop table product_order;
 drop table review;
 drop table mtm;
+
+--Delete Table
+delete from client;
+delete from admin;
+delete from product;
+delete from product_order;
+delete from review;
+delete from mtm;
+delete from cart;
+
 --Select
 select * from client;
 select * from admin;
@@ -13,70 +23,102 @@ select * from product_order;
 select * from review;
 select * from mtm;
 
-
 --Table
 create table client(
-id      varchar2(15)  not null primary key, --PK
-pw 	    varchar2(20)  not null,
-name    varchar2(10)  not null,
-email   varchar2(30)  not null,
+id      varchar2(100)  not null, --PK
+pw        varchar2(100)  not null,
+name    varchar2(100)  not null,
+email   varchar2(100)  not null,
 address varchar2(100) not null,
-phone   varchar2(20)  not null
+phone   varchar2(100)  not null,
+CONSTRAINT Client_PK PRIMARY KEY(id)
 );
 
 
 create table admin(
-admin_id   varchar2(15) not null primary key, --PK
-admin_name varchar2(10) not null,
-admin_pw   varchar2(20) not null
+id   varchar2(100) not null, --PK
+name varchar2(100) not null,
+pw   varchar2(100) not null,
+CONSTRAINT Admin_PK PRIMARY KEY(id)
 );
 
-insert into admin values('admin','admin','1111');
-
 create table product(
-pNum        number       not null primary key, --PK
-pName       varchar2(30) not null,
+pNum        number       not null, --PK
+pName       varchar2(100) not null,
 pPrice      number       not null,
 pImg        varchar2(100),
 pShortInfo  varchar2(200),
 pDetailInfo varchar2(4000),
-pCategory   varchar2(10)
+pCategory   varchar2(100),
+CONSTRAINT Product_PK PRIMARY KEY(pNum)
 );
 
 
 create table product_order(
-pNum      number        references product(pNum), --FK : product(pNum)
-id        varchar2(15)  references client(id), --FK : client(id)
-oNum      number        not null primary key, --PK
+pNum      number, --FK : product(pNum)
+id        varchar2(100), --FK : client(id)
+oNum      number        not null, --PK
 oPrice    number        not null,
 cnt       number        default 1 not null,
-oName     varchar2(10)  not null,
+oName     varchar2(100)  not null,
 oAddress  varchar2(100) not null,
-oPhone    varchar2(20),
-oDate     TimeStamp     default sysdate not null
+oPhone    varchar2(100),
+oDate     TimeStamp     default sysdate,
+CONSTRAINT P_order_PK PRIMARY KEY(oNum),
+
+CONSTRAINT Client_FK
+FOREIGN KEY(id) REFERENCES client(id)
+ON DELETE CASCADE,
+
+CONSTRAINT Product_FK
+FOREIGN KEY(pNum) REFERENCES product(pNum)
+ON DELETE CASCADE
 );
 
 
+
 create table review(
-pNum       number       references product(pNum), --FK : product(pNum)
-id         varchar2(15) references client(id), --FK : client(id)
-oNum       number       references product_order(oNum), --FK : product_order(oNum)
-rNum       number       not null primary key, --PK
-content    varchar2(1000),
-rImg       varchar2(100),
-rDate      TimeStamp    default sysdate not null
+pNum       number       , --FK : product(pNum)
+id         varchar2(100), --FK : client(id)
+oNum       number       , --FK : product_order(oNum)
+rNum       number       not null, --PK
+content    varchar2(4000),
+rImg       varchar2(1000),
+rDate      TimeStamp    default sysdate not null,
+CONSTRAINT Review_PK PRIMARY KEY(rNum),
+
+CONSTRAINT Client_review_FK
+FOREIGN KEY(id) REFERENCES client(id)
+ON DELETE CASCADE,
+
+CONSTRAINT Product_review_FK
+FOREIGN KEY(pNum) REFERENCES product(pNum)
+ON DELETE CASCADE,
+
+CONSTRAINT P_order_review_FK
+FOREIGN KEY(oNum) REFERENCES product_order(oNum)
+ON DELETE CASCADE
 );
 
 
 create table mtm(
-id      varchar2(15)   references client(id), --FK : client(id)
-mNum    number         not null primary key,
-mKind	varchar2(20)   not null,
+id      varchar2(15)   , --FK : client(id)
+mNum    number         not null,
+mKind   varchar2(20)   not null,
 title   varchar2(100)  not null,
 content varchar2(4000) not null,
 reply   varchar2(4000),
-mDate   TimeStamp      default sysdate not null
+mDate   TimeStamp      default sysdate not null,
+
+CONSTRAINT mtm_PK PRIMARY KEY(mNum),
+
+CONSTRAINT Client_mtm_FK
+FOREIGN KEY(id) REFERENCES client(id)
+ON DELETE CASCADE
 );
+
+select * from mtm;
+update mtm set reply='이건 답글' where mNum=83;
 
 create table cart(
 cNum number not null primary key,
@@ -86,22 +128,18 @@ cnt  number
 );
 
 
-select * from mtm;
-select * from mtm where id='cc';
-select * from mtm where mNum=3;
-update mtm set reply='답글입니다' where mNum=43;
-delete from mtm where mNum=41;
-
 drop sequence pNum_seq;
 drop sequence oNum_seq;
 drop sequence rNum_seq;
 drop sequence mNum_seq;
+drop sequence cNum_seq;
 
 --Sequence
 create sequence pNum_seq start with 1 increment by 1;
 create sequence oNum_seq start with 1 increment by 1;
 create sequence rNum_seq start with 1 increment by 1;
 create sequence mNum_seq start with 1 increment by 1;
+create sequence cNum_seq start with 1 increment by 1;
 
 --View1
 create or replace view mypage1_view
@@ -111,6 +149,7 @@ from CLIENT c, PRODUCT p, PRODUCT_ORDER o
 where p.pNum = o.pNum and c.id = o.id;
 
 select * from mypage1_view;
+drop view mtpage1_view;
 
 --View2
 create or replace view mypage5_view

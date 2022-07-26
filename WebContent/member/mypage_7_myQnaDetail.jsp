@@ -83,10 +83,10 @@ border:1px solid gray;
 				회원님을 위한 마이페이지 입니다.
 				<table id="mypage_table">
 					<tr>
-						<th><a href="ShopServlet?command=mypage_1&id=${sessionScope.loginUser.id}">구매내역</a></th>
-						<th>회원정보</th>
-						<th>내 구매후기</th>
-						<th><a href="ShopServlet?command=mypage_6&id=${sessionScope.loginUser.id}">내 문의내역</a></th>
+				<th><a href="ShopServlet?command=mypage_1&id=${sessionScope.loginUser.id}" class="a_tag2">구매내역</a></th>
+				<th><a href="ShopServlet?command=mypage_3&id=${sessionScope.loginUser.id}" class="a_tag2">회원정보</a></th>
+				<th><a href="ShopServlet?command=mypage_5&id=${sessionScope.loginUser.id}" class="a_tag2">내 구매후기</a></th>
+				<th><a href="ShopServlet?command=mypage_6&id=${sessionScope.loginUser.id}" class="a_tag2">내 문의내역</a></th>
 				</table>
 		<br><br><br><br><br><br>
 		<hr style="width: 900px;">
@@ -98,7 +98,7 @@ border:1px solid gray;
 		<hr style="width: 900px;">
 		<p>문의내용&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${mtm.content}</p>
 		<hr style="width: 900px;">
-		<p>답변내용&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(데이터베이스)</p>
+		<p>답변내용&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${mtm.reply}</p>
 			</div><!-- mypage_div -->
 			<%-- <c:if test="${sessionScope.adminid} "/> --%>
 		<input type="button" value="수정하기" id="but" onclick="location.href='ShopServlet?command=mtmUpdateForm&mNum=${mtm.mNum}'">

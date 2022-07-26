@@ -47,6 +47,7 @@ text-align:top;
 		<hr>
 		<span style="font-size:15px">BRANDHISTORY AS안내 FAQ 이용약관
 		개인정보취급방침 SITEMAP</span>
+		<a href="admin/admin_loginForm.jsp">AdministratorPage</a>
 		</div>
 		
 		<div id="group2">
