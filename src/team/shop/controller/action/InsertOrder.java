@@ -29,7 +29,7 @@ public class InsertOrder implements Action {
 		oVo.setpNum(pNum);
 		oVo.setId(request.getParameter("id"));
 		oVo.setoPrice(oPrice);
-		oVo.setcnt(cnt); 
+		oVo.setcnt(cnt);
 		oVo.setoName(request.getParameter("rec_name"));
 		oVo.setoAddress(oAddress);
 		oVo.setoPhone(request.getParameter("rec_phone"));

@@ -59,16 +59,24 @@ font-weight:bold;
 #mypage_table th{
 border:1px solid gray;
 }
-/* #but{
+#but{
 	margin: auto;
 	width: 100px;
 	background-color: darkblue;
 	color: white;
-} */
+}
+.a_tag2{
+text-decoration:none;
+color:black;
+}
+.a_tag2:hover{
+background:black;
+color:white;
+}
 </style>
 </head>
 <body>
-<form name="formm" method="post">
+
 <%-- <input type="hidden" name="title" value="${mtmVO}"> --%>
 
 	<div id="big">
@@ -84,7 +92,7 @@ border:1px solid gray;
 				<table id="mypage_table">
 					<tr>
 				<th><a href="ShopServlet?command=mypage_1&id=${sessionScope.loginUser.id}" class="a_tag2">구매내역</a></th>
-				<th><a href="ShopServlet?command=mypage_3&id=${sessionScope.loginUser.id}" class="a_tag2">회원정보</a></th>
+				<th><a href="ShopServlet?command=mypage3_1_moveAction&id=${sessionScope.loginUser.id}" class="a_tag2">회원정보</a></th>
 				<th><a href="ShopServlet?command=mypage_5&id=${sessionScope.loginUser.id}" class="a_tag2">내 구매후기</a></th>
 				<th><a href="ShopServlet?command=mypage_6&id=${sessionScope.loginUser.id}" class="a_tag2">내 문의내역</a></th>
 				</table>
@@ -99,10 +107,9 @@ border:1px solid gray;
 		<p>문의내용&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${mtm.content}</p>
 		<hr style="width: 900px;">
 		<p>답변내용&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${mtm.reply}</p>
-			</div><!-- mypage_div -->
-			<%-- <c:if test="${sessionScope.adminid} "/> --%>
 		<input type="button" value="수정하기" id="but" onclick="location.href='ShopServlet?command=mtmUpdateForm&mNum=${mtm.mNum}'">
 		<input type="button" value="삭제하기" id="but" onclick="location.href='ShopServlet?command=mtmDelete&mNum=${mtm.mNum}'"> 
+			</div><!-- mypage_div -->
 			
 	</div><!-- small -->
 		</div><!-- big -->
@@ -111,6 +118,6 @@ border:1px solid gray;
 	</div>
 
 	
-</form>
+
 </body>
 </html>

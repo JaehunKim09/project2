@@ -60,13 +60,12 @@ p {
 				<aside id="aside">
 					<h1>고객센터</h1>
 					<hr size="5px" color="black">
-					<b><a href="question_main.jsp"
-						style="color: black; text-decoration: none"><li>자주하는 질문</b>
-					</li> </a>
+					<b><a href="ShopServlet?command=question_main"
+						style="color: black; text-decoration: none"><li>자주하는 질문</li></a></b>
 					<hr>
-					<b><a href="ask.jsp"
-						style="color: black; text-decoration: none"><li>1:1 문의하기</b>
-					</li> <br> <br> <br> </a> <br>
+					<b><a href="ShopServlet?command=ask"
+						style="color: black; text-decoration: none"><li>1:1 문의하기</li></a></b>
+					 <br><br><br><br>
 					<table style="border-collapse: collapse; width: 100%" border="1px">
 						<td style="text-align: center">
 							<h3>상담 전화</h3> <b style="color: orange;">1234 - 5678</b> <br>
@@ -92,13 +91,13 @@ p {
 					<br>
 					<table style="border-collapse: collapse; width: 70%; height: 40px;"
 						border="1px">
-						<th><a href="question_main.jsp">전체</a></th>
-						<th><a href="product_inquiry.jsp">상품문의</a></th>
-						<th><a href="order_payment.jsp">주문/결제</a></th>
-						<th><a href="delivery.jsp">배송</a></th>
-						<th><a href="return.jsp">반품/교환/환불</a></th>
-						<th><a href="saving.jsp">적립/혜택</a></th>
-						<th><a href="etc.jsp">회원/기타</a></th>
+						<th><a href="ShopServlet?command=question_main">전체</a></th>
+						<th><a href="ShopServlet?command=product_inquiry">상품문의</a></th>
+						<th><a href="ShopServlet?command=order_payment">주문/결제</a></th>
+						<th><a href="ShopServlet?command=delivery">배송</a></th>
+						<th><a href="ShopServlet?command=return">반품/교환/환불</a></th>
+						<th><a href="ShopServlet?command=saving">적립/혜택</a></th>
+						<th><a href="ShopServlet?command=etc">회원/기타</a></th>
 					</table>
 					<hr style="width:1210px; float:left"><br>
 					<details>

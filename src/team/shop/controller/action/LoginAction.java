@@ -22,12 +22,13 @@ public class LoginAction implements Action {
 		
 		HttpSession session=request.getSession();
 		
-		//client
+		
 		clientDAO cDao = clientDAO.getInstance();
 		clientVO cVo = cDao.getUser(id2);
 		
 		if(cVo != null){
-			if(cVo.getPw().equals(pw2)){
+			if(cVo.getPw().equals(pw2)){    
+				
 				session.setAttribute("loginUser", cVo);
 				url="ShopServlet?command=index";
 			}

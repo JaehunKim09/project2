@@ -128,7 +128,7 @@ color:#ffffff;
 </style>
 </head>
 <body>
-
+<jsp:include page="../include/admin_header.jsp"/>
 <form name="frm" method="post" action="ShopServlet?command=admin_login">
 
 	<!-- login -->

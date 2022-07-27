@@ -52,8 +52,9 @@ margin-top:10px;
 #mypage_table th{
 border:1px solid gray;
 }
-#mypage_table th:hover{
-color:red;
+#mypage_table th:hover {
+	background: black;
+	color: white;
 }
 #product_info_table{
 border-bottom:1px solid black;
@@ -83,7 +84,7 @@ color:white;
 <body>
 	<div id="big">
 		<div id="small">
-			<div id="header"> 
+			<div id="header">
 				<jsp:include page="../include/header_notlogin.jsp"></jsp:include>
 			</div><!-- header -->
 			
@@ -95,7 +96,7 @@ color:white;
 				<table id="mypage_table">
 					<tr>
 				<th><a href="ShopServlet?command=mypage_1&id=${sessionScope.loginUser.id}" class="a_tag2">구매내역</a></th>
-				<th><a href="ShopServlet?command=mypage_3&id=${sessionScope.loginUser.id}" class="a_tag2">회원정보</a></th>
+				<th><a href="ShopServlet?command=mypage3_1_moveAction&id=${sessionScope.loginUser.id}" class="a_tag2">회원정보</a></th>
 				<th><a href="ShopServlet?command=mypage_5&id=${sessionScope.loginUser.id}" class="a_tag2">내 구매후기</a></th>
 				<th><a href="ShopServlet?command=mypage_6&id=${sessionScope.loginUser.id}" class="a_tag2">내 문의내역</a></th>
 				</table>

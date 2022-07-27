@@ -1,7 +1,6 @@
 package team.shop.controller;
 
-import team.shop.controller.action.Action;
-
+import team.shop.controller.action.Action;  
 import team.shop.controller.action.CartDelete;
 import team.shop.controller.action.CartInsert;
 import team.shop.controller.action.CartList;
@@ -17,28 +16,48 @@ import team.shop.controller.action.LoginFormAction;
 import team.shop.controller.action.LogoutAction;
 import team.shop.controller.action.MyPage1Action;
 import team.shop.controller.action.MyPage3Action;
+import team.shop.controller.action.MyPage3_1_moveAction;
+import team.shop.controller.action.MyPage3_2_checkAction;
+import team.shop.controller.action.MyPage4_1_updateAction;
 import team.shop.controller.action.MyPage5Action;
+import team.shop.controller.action.MyPage6Action;
+import team.shop.controller.action.MyPage7Action;
+import team.shop.controller.action.Payment;
 import team.shop.controller.action.ProductDetailAction;
 import team.shop.controller.action.ReviewAction;
 import team.shop.controller.action.SearchAction;
 import team.shop.controller.action.WriteReviewFormAction;
 import team.shop.controller.action.askAction;
+import team.shop.controller.action.deleveryAction;
+import team.shop.controller.action.etcAction;
 import team.shop.controller.action.mtmDeleteAction;
 import team.shop.controller.action.mtmUpdate;
 import team.shop.controller.action.mtmUpdateForm;
-import team.shop.controller.action.MyPage7Action;
-import team.shop.controller.action.MyPage6Action;
-import team.shop.controller.action.Payment;
 import team.shop.controller.action.mtmWriteAction;
+import team.shop.controller.action.orderPaymentAction;
+import team.shop.controller.action.productInquiryAction;
+import team.shop.controller.action.questionAction;
+import team.shop.controller.action.returnAction;
+import team.shop.controller.action.savingAction;
 import team.shop.controller.admin.action.AdminCategoryList;
 import team.shop.controller.admin.action.AdminDeleteAction;
 import team.shop.controller.admin.action.AdminLoginAction;
+import team.shop.controller.admin.action.AdminLoginFormAction;
 import team.shop.controller.admin.action.AdminMainAction;
 import team.shop.controller.admin.action.AdminMtmList;
 import team.shop.controller.admin.action.AdminMtmOneList;
 import team.shop.controller.admin.action.AdminMtmUpdateAction;
+import team.shop.controller.admin.action.AdminProductInsert;
+import team.shop.controller.admin.action.AdminProductInsertForm;
+import team.shop.controller.admin.action.AdminReviewCall;
+import team.shop.controller.admin.action.AdminReviewDelete;
 import team.shop.controller.admin.action.AdminUpdateAction;
 import team.shop.controller.admin.action.AdminUpdateFormAction;
+import team.shop.controller.admin.action.admin_memberDeleteAction;
+import team.shop.controller.admin.action.admin_memberDetailUpdateAction;
+import team.shop.controller.admin.action.admin_memberDetailViewAction;
+import team.shop.controller.admin.action.admin_memberListsearchAction;
+import team.shop.controller.admin.action.admin_memberListselectAction;
 
 public class ActionFactory {
 	//싱글톤 형태로 유일하게 한 개의 객체만 생성하고 getInstance()로 호출해 사용함
@@ -59,6 +78,8 @@ public class ActionFactory {
 			action = new CategoryDetailAction();
 		}else if(command.equals("product_detail")){
 			action = new ProductDetailAction();
+		}else if(command.equals("search")) {
+			action = new SearchAction();
 		}else if(command.equals("index")) {
 			action = new IndexAction();
 		}else if(command.equals("log_in")) {
@@ -72,34 +93,51 @@ public class ActionFactory {
 		}else if(command.equals("logout")){
 			action = new LogoutAction();
 		}else if(command.equals("review")) {
-	         action = new ReviewAction();
-		//command에 해당하는 Action을 Servlet으로 리턴해줌
-		}else if(command.equals("mtm")) {
-			action = new mtmWriteAction();
-		}else if(command.equals("ask")) {
-			action = new askAction();
-		}else if(command.equals("mypage_6")) {
-			action = new MyPage6Action();
+			action = new ReviewAction();
 		}else if(command.equals("mypage_1")) {
 			action = new MyPage1Action();
-		}else if(command.equals("payment")) {
-			action = new Payment();
-		}else if(command.equals("insert_order")) {
-			action = new InsertOrder();
+		}else if(command.equals("mypage_2")) {
+			action = new WriteReviewFormAction();
+		}else if(command.equals("mypage3_1_moveAction")) {
+			action = new MyPage3_1_moveAction();
+		}else if(command.equals("mypage3_2_checkAction")) {
+			action = new MyPage3_2_checkAction();
+		}else if(command.equals("mypage4_1_updateAction")) {
+			action = new MyPage4_1_updateAction();
 		}else if(command.equals("mypage_5")) {
 			action = new MyPage5Action();
-		}else if(command.equals("mypage_3")) {
-			action = new MyPage3Action();
+		}else if(command.equals("mypage_6")) {
+			action = new MyPage6Action();
 		}else if(command.equals("mypage_7")) {
 			action = new MyPage7Action();
-		}else if(command.equals("mtmUpdate")) {
+		}else if(command.equals("ask")) {
+			action = new askAction();
+		}else if(command.equals("question_main")) {
+			action = new questionAction();
+		}else if(command.equals("product_inquiry")) {
+			action = new productInquiryAction();
+		}else if(command.equals("order_payment")) {
+			action = new orderPaymentAction();
+		}else if(command.equals("delivery")) {
+			action = new deleveryAction();
+		}else if(command.equals("return")) {
+			action = new returnAction();
+		}else if(command.equals("saving")) {
+			action = new savingAction();
+		}else if(command.equals("etc")) {
+			action = new etcAction();
+		}else if(command.equals("mtmWrite")) {
+			action = new mtmWriteAction();
+		}else if(command.equals("mtmUpdate")){
 			action = new mtmUpdate();
 		}else if(command.equals("mtmUpdateForm")) {
 			action = new mtmUpdateForm();
 		}else if(command.equals("mtmDelete")) {
 			action = new mtmDeleteAction();
-		}else if(command.equals("mypage_2")) {
-			action = new WriteReviewFormAction();
+		}else if(command.equals("payment")) {
+			action = new Payment();
+		}else if(command.equals("insert_order")) {
+			action = new InsertOrder();
 		}else if(command.equals("insert_review")) {
 			action = new InsertReview();
 		}else if(command.equals("cart_insert")) {
@@ -110,32 +148,52 @@ public class ActionFactory {
 			action = new CartDelete();
 		}else if(command.equals("cart_payment")) {
 			action = new CartPayment();
-		}else if(command.equals("search")) {
-			action = new SearchAction();
 		}
 		
+		
+			
 		//admin Action
-				else if(command.equals("admin_login")) {
-					action = new AdminLoginAction();
-				}else if(command.equals("admin_main")) {
-					action = new AdminMainAction();
-				}else if(command.equals("admin_product_UpdateForm")) {
-					action = new AdminUpdateFormAction();
-				}else if(command.equals("admin_productUpdate")) {
-					action = new AdminUpdateAction();
-				}else if(command.equals("admin_productDelete")) {
-					action = new AdminDeleteAction();
-				}else if(command.equals("admin_category_list")) {
-					action = new AdminCategoryList();
-				}else if(command.equals("admin_mtm_List")) {
-					action = new AdminMtmList();
-				}else if(command.equals("Admin_mtm_one_list")) {
-					action = new AdminMtmOneList();
-				}else if(command.equals("Admin_mtm_reply_update")) {
-					action = new AdminMtmUpdateAction();
-				}
-				
-	
+		else if(command.equals("admin_loginForm")) {
+			action = new AdminLoginFormAction();
+		}else if(command.equals("admin_login")) {
+			action = new AdminLoginAction();
+		}else if(command.equals("admin_main")) {
+			action = new AdminMainAction();
+		}else if(command.equals("admin_product_UpdateForm")) {
+			action = new AdminUpdateFormAction();
+		}else if(command.equals("admin_pUpdate")) {
+			action = new AdminUpdateAction();
+		}else if(command.equals("admin_pDelete")) {
+			action = new AdminDeleteAction();
+		}else if(command.equals("admin_category_list")) {
+			action = new AdminCategoryList();
+		}else if(command.equals("admin_memberList")) {
+			action = new admin_memberListselectAction();
+		}else if(command.equals("admin_memberListsearch")) {
+			action = new admin_memberListsearchAction();
+		}else if(command.equals("admin_memberDetail")) {
+			action = new admin_memberDetailViewAction();
+		}else if(command.equals("admin_memberDetailUpdate")) {
+			action = new admin_memberDetailUpdateAction();
+		}else if(command.equals("admin_memberDelete")) {
+			action = new admin_memberDeleteAction();
+		}else if(command.equals("admin_mtmList")) {
+			action = new AdminMtmList();
+		}else if(command.equals("Admin_mtm_one_list")) {
+			action = new AdminMtmOneList();
+		}else if(command.equals("Admin_mtm_reply_update")) {
+			action = new AdminMtmUpdateAction();
+		}else if(command.equals("admin_review_call")) {
+			action = new AdminReviewCall();
+		}else if(command.equals("admin_review_delete")) {
+			action = new AdminReviewDelete();
+		}else if(command.equals("admin_pInsertForm")) {
+			action = new AdminProductInsertForm();
+		}else if(command.equals("admin_pInsert")) {
+			action = new AdminProductInsert();
+		}
+		//command에 해당하는 Action을 Servlet으로 리턴해줌
 		return action;
-}
+	}
+	
 }

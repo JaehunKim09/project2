@@ -6,6 +6,7 @@ import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import team.shop.DAO.adminDAO;
 import team.shop.DTO.adminVO;
@@ -20,14 +21,18 @@ public class AdminLoginAction implements Action {
 		String id = request.getParameter("id");
 		String pw = request.getParameter("pw");
 		
+		HttpSession session = request.getSession();
+		
 		
 		adminDAO adminDao = adminDAO.getInstance();
 		adminVO adminVo = adminDao.getUser(id);
 		
 		if(adminVo != null){
 			if(adminVo.getPw().equals(pw)){    
-
+				
+				session.setAttribute("loginAdmin", adminVo);
 				url="ShopServlet?command=admin_main";
+				
 			}
 		}
 		RequestDispatcher dispatcher = request.getRequestDispatcher(url);

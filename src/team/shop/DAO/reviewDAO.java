@@ -113,6 +113,61 @@ public class reviewDAO {
 		}
 		return list;
 	}
+	public void reviewDelete(int rNum) {
+		String sql = "delete from review where rNum=?";
+
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+
+		try {
+			conn = DBManager.getConnection();
+			pstmt = conn.prepareStatement(sql);
+
+			pstmt.setInt(1, rNum);
+
+			pstmt.executeUpdate();
+
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			DBManager.close(conn, pstmt);
+		}
 	}
+
+	public ArrayList<reviewVO> reviewList() {
+		String sql="select * from review";
+		
+		ArrayList<reviewVO> reviewList = new ArrayList<reviewVO>();
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			conn = DBManager.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			
+			while (rs.next()) {
+				reviewVO pVo = new reviewVO();
+
+				pVo.setpNum(rs.getInt("pNum"));
+				pVo.setId(rs.getString("id"));
+				pVo.setoNum(rs.getInt("oNum"));
+				pVo.setrNum(rs.getInt("rNum"));
+				pVo.setContent(rs.getString("content"));
+				pVo.setrImg(rs.getString("rImg"));
+				pVo.setrDate(rs.getTimestamp("rDate"));
+				
+				reviewList.add(pVo);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			DBManager.close(conn, pstmt, rs);
+		}
+		return reviewList;
+	}
+}
 
 	

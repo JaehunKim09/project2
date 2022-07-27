@@ -1,12 +1,12 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@page import="java.sql.*" %>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="utf-8">
 <title>Insert title here</title>
 <style>
 html, body {
@@ -21,7 +21,7 @@ html, body {
 }
 
 #small {
-	padding-bottom: 200px; /* footerÀÇ ³ôÀÌ */
+	padding-bottom: 200px; /* footerì˜ ë†’ì´ */
 }
 #mypage_div{
 position:absolute;
@@ -71,10 +71,19 @@ height:50px;
 width:700px;
 height:50px;
 }
+.a_tag2{
+text-decoration:none;
+color:black;
+}
+.a_tag2:hover{
+background:black;
+color:white;
+}
 </style>
 </head>
 <body>
 <form name="formm" method="post">
+
 <div id="big">
 		<div id="small">
 			<div id="header">
@@ -84,29 +93,28 @@ height:50px;
 			<hr size="2" style="color: lightgray">
 			<div id="mypage_div">
 				<br>
-				<span id="mypage_span">¸¶ÀÌÆäÀÌÁö </span>&nbsp;&nbsp;&nbsp; ${sessionScope.loginUser.id}È¸¿ø´ÔÀ» À§ÇÑ
-				¸¶ÀÌÆäÀÌÁö ÀÔ´Ï´Ù.
+				<span id="mypage_span">ë§ˆì´í˜ì´ì§€ </span>&nbsp;&nbsp;&nbsp; ${sessionScope.loginUser.id}íšŒì›ë‹˜ì„ ìœ„í•œ
+				ë§ˆì´í˜ì´ì§€ ì…ë‹ˆë‹¤.
 				<table id="mypage_table">
 					<tr>
-						<th><a href="ShopServlet?command=mypage_1&id=${sessionScope.loginUser.id}">±¸¸Å³»¿ª</a></th>
-						<th>È¸¿øÁ¤º¸</th>
-						<th>³» ±¸¸ÅÈÄ±â</th>
-						<th><a href="ShopServlet?command=mypage_6&id=${sessionScope.loginUser.id}">³» ¹®ÀÇ³»¿ª</a></th>
+				<th><a href="ShopServlet?command=mypage_1&id=${sessionScope.loginUser.id}" class="a_tag2">êµ¬ë§¤ë‚´ì—­</a></th>
+				<th><a href="ShopServlet?command=mypage3_1_moveAction&id=${sessionScope.loginUser.id}" class="a_tag2">íšŒì›ì •ë³´</a></th>
+				<th><a href="ShopServlet?command=mypage_5&id=${sessionScope.loginUser.id}" class="a_tag2">ë‚´ êµ¬ë§¤í›„ê¸°</a></th>
+				<th><a href="ShopServlet?command=mypage_6&id=${sessionScope.loginUser.id}" class="a_tag2">ë‚´ ë¬¸ì˜ë‚´ì—­</a></th>
 				</table>
 			</div>
 			<br><br><br><br><br>
 			<div id="product_Info">
-			<span id="span">¹®ÀÇ³»¿ª&nbsp;&nbsp;&nbsp; </span>
-				<input type='button' class='btn' name='btn' value='ÀÚÁÖÇÏ´ÂÁú¹®' onclick="location.href='ShopServlet?command='"> 
-				<input type='button' class='btn' name='btn' value='1:1¹®ÀÇÇÏ±â' onclick="location.href='ShopServlet?command=ask'">
-				
+			<span id="span">ë¬¸ì˜ë‚´ì—­&nbsp;&nbsp;&nbsp; </span>
+				<input type='button' class='btn' name='btn' value='ìì£¼í•˜ëŠ”ì§ˆë¬¸' onclick="location.href='ShopServlet?command=question_main'">
+				<input type='button' class='btn' name='btn' value='1:1ë¬¸ì˜í•˜ê¸°' onclick="location.href='ShopServlet?command=ask'">
 			<br><br>
 			
 			<table id="question_table1">
 		<tr style="background:lightblue">
-			<th colspan="2">¹øÈ£</th>
-			<th colspan="2">ÀÏÀÚ</th>
-			<th colspan="2">Á¦¸ñ</th>
+			<th colspan="2">ë²ˆí˜¸</th>
+			<th colspan="2">ì¼ì</th>
+			<th colspan="2">ì œëª©</th>
 			
 		</tr>
 		<c:forEach items="${mtmVO}" var="mtmVo">
@@ -119,18 +127,6 @@ height:50px;
 		</c:forEach>
 		</table>
 		<br><br>
-				<table id="question_table2">
-		<tr style="background:lightblue">
-			<th colspan="2">ÀÏÀÚ</th>
-			<th colspan="2">Á¦¸ñ</th>
-			<th colspan="2">´äº¯ÀÏÀÚ</th>
-		</tr>
-		<tr>	
-			<th colspan="2">1¤±¤¤¤·</th>
-			<th colspan="2">2</th>
-			<th colspan="2">3</th>
-			</tr>
-		</table>
 			</div>
 </div><!-- small -->
 <div id="footer">

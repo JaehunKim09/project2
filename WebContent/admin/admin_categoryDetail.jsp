@@ -66,7 +66,6 @@ text-align:center;
 				<a href="ShopServlet?command=admin_product_UpdateForm&pNum=${list.pNum}"><img class="product" src="${list.pImg}"></a>
 				<br>${list.pName}</div></td>
 	    <c:if test="${i%j == j-1 }">
-	    </tr>
 	    </c:if>
 	    <c:set var="i" value="${i+1 }" />
 	  </c:forEach>

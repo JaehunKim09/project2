@@ -121,7 +121,7 @@ html, body {
 		
 		<div id="footer">
 			<jsp:include page="../include/footer.jsp"></jsp:include></div>
-	</div>
+</div>
 </body>
 <script
 	src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>

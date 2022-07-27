@@ -8,6 +8,7 @@
 <style>
 html, body {
 	margin: 0;
+	
 	padding: 0;
 	height: 100%;
 }
@@ -19,7 +20,7 @@ html, body {
 
 #small {
 	padding-bottom: 200px; /* footer의 높이 */
-}
+}r
 
 #banner {
 	position: absolute;

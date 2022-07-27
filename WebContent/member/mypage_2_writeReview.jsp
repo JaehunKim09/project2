@@ -80,25 +80,7 @@ height:150px;
 					vertical-align:top;" name="content"></textarea> </td>
 				</tr>
 				<br><br>
-			<!-- <table>
-				<tr>
-					<td>* Upload &nbsp;</td>
-					<td><input type="button" value="불러오기"></td>
-				</tr>
-			</table>
-			<table>
-				<tr>
-					<td>
-						<img src="#" class="img img_take"></td>
-					<td>
-						<img src="#" class="img img_take"></td>
-					<td>
-						<img src="#" class="img img_take"></td>
-					<td>
-						<img src="#" class="img img_take"></td>
-				</tr>
-			</table>
-				<br><br> -->
+
 				<table text-align="center";>
 					<td><input type="submit" value="등록" class="button" onclick="return review_check()">
 						<input type="reset" value="취소" class="button"></td>

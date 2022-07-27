@@ -15,7 +15,7 @@ public class AdminMtmUpdateAction implements Action {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String url="ShopServlet?command=admin_mtm_List";
+		String url="ShopServlet?command=admin_mtmList";
 		
 		mtmVO mtmVo = new mtmVO();
 		

@@ -16,7 +16,7 @@ public class AdminMtmList implements Action {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String url="/AdminMtm/AdminMtmList.jsp";
+		String url="/admin/AdminMtmList.jsp";
 		
 		
 		 

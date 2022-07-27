@@ -30,7 +30,6 @@ public class JoinAction implements Action {
 		
 		clientVO cVo = new clientVO();
 		
-		
 		cVo.setId(id);
 		cVo.setPw(pw);
 		cVo.setName(name);

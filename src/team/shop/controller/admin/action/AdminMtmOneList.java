@@ -15,7 +15,7 @@ public class AdminMtmOneList implements Action {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String url="/AdminMtm/AdminMtmOneList.jsp";
+		String url="/admin/AdminMtmOneList.jsp";
 		
 		String mNum = request.getParameter("mNum");
 		

@@ -6,6 +6,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import team.shop.DAO.p_orderDAO;
 import team.shop.DAO.productDAO;
 import team.shop.DTO.productVO;
 
@@ -18,7 +19,7 @@ public class WriteReviewFormAction implements Action {
 		productVO pVo = new productVO();
 		
 		productDAO pDao = productDAO.getInstance();
-		pVo = pDao.selectOneProductBypNum(request.getParameter("pNum"));
+		pVo = pDao.selectOneProductBypNum(request.getParameter("pNum"));	
 		
 		request.setAttribute("product", pVo);
 		

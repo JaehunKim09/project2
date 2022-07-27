@@ -16,7 +16,7 @@ public class mtmWriteAction implements Action {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String url = "/index.jsp";
+		String url = "ShopServlet?command=mypage_6";
 		
 		HttpSession session = request.getSession();
 		
@@ -35,8 +35,7 @@ public class mtmWriteAction implements Action {
 			mtmDAO mtmDao = mtmDAO.getInstance();
 			mtmDAO.insertmtm(mtmVo,	loginUser.getId());
 		}
-		RequestDispatcher dispaatcher = request.getRequestDispatcher(url);
-		dispaatcher.forward(request, response);
+		response.sendRedirect(url);
 	}
 
 }

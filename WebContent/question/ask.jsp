@@ -70,7 +70,7 @@ select {
 </style>
 </head>
 <body>
-<form name="frm" method="post" action="ShopServlet?command=mtm">
+<form name="frm" method="post" action="ShopServlet?command=mtmWrite">
 	<div id="big">
 		<div id="small">
 			<div id="header">
@@ -81,13 +81,12 @@ select {
 				<aside id="aside">
 					<h1>고객센터</h1>
 					<hr size="5px" color="black">
-					<b><a href="question_main.jsp"
-						style="color: black; text-decoration: none"><li>자주하는 질문</b>
-					</li> </a>
+					<b><a href="ShopServlet?command=question_main"
+						style="color: black; text-decoration: none"><li>자주하는 질문</li></a></b>
 					<hr>
-					<b><a href="ask.jsp"
-						style="color: black; text-decoration: none"><li>1:1 문의하기</b>
-					</li> <br> <br> <br> </a> <br>
+					<b><a href="ShopServlet?command=ask"
+						style="color: black; text-decoration: none"><li>1:1 문의하기</li></a></b>
+					 <br><br><br><br>
 					<table style="border-collapse: collapse; width: 100%" border="1px">
 						<td style="text-align: center">
 							<h3>상담 전화</h3> <b style="color: orange;">1234 - 5678</b> <br>

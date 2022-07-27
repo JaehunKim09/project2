@@ -5,6 +5,18 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script>
+function check(){
+	var frmm = document.frm;
+	if(frmm.pw.value.length == 0){
+		alert("비밀번호를 입력해 주세요.");
+		frmm.id.focus();
+		return false;
+	}else{
+		return true;
+	}
+}
+</script>
 <Style>
 html, body {
 	margin: 0;
@@ -15,7 +27,6 @@ html, body {
 	min-height: 100%;
 	position: relative;
 }
-
 #small {
 	padding-bottom: 200px; /* footer의 높이 */
 }
@@ -33,7 +44,6 @@ border:1px solid black;
 width:900px;
 height:80px;
 text-align:left;
-
 }
 #mypage_span{
 font-size:30px;
@@ -58,8 +68,9 @@ margin-top:10px;
 #mypage_table th{
 border:1px solid gray;
 }
-#mypage_table th:hover{
-color:red;
+#mypage_table th:hover {
+	background: black;
+	color: white;
 }
 #loginbox {
 	width: 60%;
@@ -68,14 +79,12 @@ color:red;
 	top: 30px;
 	left : 0
 }
-
 #login1 {
 	font-size: 25px;
 	position: absolute;
 	left: 420px;
 	text-align: center;
 }
-
 #login2 {
 	font-size: 15px;
 	position: relative;
@@ -92,7 +101,6 @@ color:red;
 	border: 1px solid #1b5ac2;
 	background: #ffffff;
 }
-
 #pw {
 	display: inline-block;
 	position: absolute;
@@ -127,13 +135,13 @@ color:white;
 </Style>
 </head>
 <body>
+
 	<div id="big">
 		<div id="small">
 			<div id="header">
 				<jsp:include page="../include/header_notlogin.jsp"></jsp:include>
 			</div><!-- header -->
-
-		 <hr size="2" style="color:lightgray">
+			<hr size="2" style="color:lightgray">
 			<div id="mypage_div">
 		<br><span id="mypage_span">마이페이지
 		</span>&nbsp;&nbsp;&nbsp;
@@ -144,7 +152,7 @@ color:white;
 		<table id="mypage_table">
 			<tr>
 				<th><a href="ShopServlet?command=mypage_1&id=${sessionScope.loginUser.id}" class="a_tag2">구매내역</a></th>
-				<th><a href="ShopServlet?command=mypage_3&id=${sessionScope.loginUser.id}" class="a_tag2">회원정보</a></th>
+				<th><a href="ShopServlet?command=mypage3_1_moveAction&id=${sessionScope.loginUser.id}" class="a_tag2">회원정보</a></th>
 				<th><a href="ShopServlet?command=mypage_5&id=${sessionScope.loginUser.id}" class="a_tag2">내 구매후기</a></th>
 				<th><a href="ShopServlet?command=mypage_6&id=${sessionScope.loginUser.id}" class="a_tag2">내 문의내역</a></th>
 		</table>
@@ -160,18 +168,19 @@ color:white;
 				<hr align="left" style= width:520px>
 			</div>
 		</div>
-		
+		<form name="frm" method="post" action="ShopServlet?command=mypage3_2_checkAction">
 		<div id="name">
-			<input id="input" type="text" value="${sessionScope.loginUser.id}"><br>
+			<input id="input" type="text" value="${sessionScope.loginUser.id}" readonly name="id"><br>
 			<br>
 		</div>
 		<div id="pw">
-			<input id="input" type="password" placeholder="비밀번호"><br>	
+			<input id="input" type="password" placeholder="비밀번호" name="pw"><br>	
 			<br>
 			<span>*비밀번호는 타인에게 노출되지 않도록 주의하시기 바랍니다.</span>
 			<br>
 			<br>
-			<button id="loginbut">확인</button>
+			
+			<input type="submit" id="loginbut" value="로그인" onclick="return check()"></form>
 		</div>
 	</div>	
 		</div><!-- small -->
@@ -180,3 +189,12 @@ color:white;
 	</div><!-- big -->
 </body>
 </html>
+
+
+
+
+
+
+
+
+
