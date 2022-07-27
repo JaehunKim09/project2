@@ -15,7 +15,6 @@ import team.shop.controller.action.LoginAction;
 import team.shop.controller.action.LoginFormAction;
 import team.shop.controller.action.LogoutAction;
 import team.shop.controller.action.MyPage1Action;
-import team.shop.controller.action.MyPage3Action;
 import team.shop.controller.action.MyPage3_1_moveAction;
 import team.shop.controller.action.MyPage3_2_checkAction;
 import team.shop.controller.action.MyPage4_1_updateAction;
@@ -51,8 +50,10 @@ import team.shop.controller.admin.action.AdminProductInsert;
 import team.shop.controller.admin.action.AdminProductInsertForm;
 import team.shop.controller.admin.action.AdminReviewCall;
 import team.shop.controller.admin.action.AdminReviewDelete;
+import team.shop.controller.admin.action.AdminSearch;
 import team.shop.controller.admin.action.AdminUpdateAction;
 import team.shop.controller.admin.action.AdminUpdateFormAction;
+import team.shop.controller.admin.action.Admin_mtmList_Action;
 import team.shop.controller.admin.action.admin_memberDeleteAction;
 import team.shop.controller.admin.action.admin_memberDetailUpdateAction;
 import team.shop.controller.admin.action.admin_memberDetailViewAction;
@@ -191,6 +192,10 @@ public class ActionFactory {
 			action = new AdminProductInsertForm();
 		}else if(command.equals("admin_pInsert")) {
 			action = new AdminProductInsert();
+		}else if(command.equals("admin_search")) {
+			action = new AdminSearch();
+		}else if(command.equals("Admin_mtmList")) {
+			action = new Admin_mtmList_Action();
 		}
 		//command에 해당하는 Action을 Servlet으로 리턴해줌
 		return action;

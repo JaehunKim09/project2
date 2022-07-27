@@ -114,7 +114,7 @@ font-size:30px;
 </head>
 <body>
 <form method="post" action="ShopServlet">
-<input type="hidden" name="command" value="search">
+<input type="hidden" name="command" value="admin_search">
 <div id="p_container_header">
 	<a href="ShopServlet?command=admin_main" class="a_tag3" style="font-size:50px;"><b>홈으로</b></a>
 	

@@ -5,8 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
-
-
+import team.shop.DTO.clientVO;
 import team.shop.DTO.mtmVO;
 
 import team.util.DBManager;
@@ -313,6 +312,40 @@ public class mtmDAO {
 		}
 
 	}//admtmUpdate끝
+	
+	public ArrayList<mtmVO> searchMtm(String id){
+		 
+		ArrayList<mtmVO> list = new ArrayList<mtmVO>();
+		String sql = "select * from mtm where id like '%'||?||'%'";
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			conn = DBManager.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+
+			while(rs.next()) {
+				mtmVO cVo = new mtmVO();
+
+				cVo.setId(rs.getString("id"));
+				cVo.setmNum(Integer.parseInt(rs.getString("mNum")));
+				cVo.setTitle(rs.getString("title"));
+				cVo.setContent(rs.getString("content"));
+				cVo.setmDate(rs.getTimestamp("mDate"));
+				cVo.setReply(rs.getString("reply"));
+				
+				list.add(cVo);
+			}
+
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			DBManager.close(conn, pstmt, rs);
+		}
+		return list;
+	}
 	
 	
 }

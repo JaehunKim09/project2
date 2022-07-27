@@ -7,7 +7,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import team.shop.DAO.clientDAO;
-import team.shop.DTO.clientVO;
 import team.shop.controller.action.Action;
 
 public class admin_memberDeleteAction implements Action {

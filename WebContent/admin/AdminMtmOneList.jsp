@@ -16,7 +16,9 @@
 <body>
 <jsp:include page="../include/admin_header.jsp"/>
 <div id = small>
+
 <form method="post" action="ShopServlet?command=Admin_mtm_reply_update&mNum=${admtm.mNum}">
+
 
 
 		<p>분류&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${admtm.mKind}</p>
@@ -27,7 +29,7 @@
 		<hr style="width: 900px;">
 		<p>문의내용&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${admtm.content}</p>
 		<hr style="width: 900px;">
-		<p>답변내용<input type="text" name="reply" value="${admtm.reply}"></p>
+		<p>답변내용<input type="text" name="reply" value="${admtm.reply}" style="width: 300px; height: 50px;"></p>
 		
 		<input type="submit" value="답변달기">
 		
